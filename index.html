@@ -4,20 +4,20 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
-<title>Do Clique ao Funil · Leonardo Alves</title>
-<meta name="description" content="Mentoria individual de tráfego pago e infoprodutos: 16 aulas de 1h, prática sem limite e alocação em projetos reais.">
+<title>Infoprodutos na prática · Leonardo Alves</title>
+<meta name="description" content="Mentoria individual de 4 meses: criar e vender produtos digitais trabalhando em projetos reais.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap">
 <style>
-/* Layout: página única de rolagem suave sobre preto; hero com retrato, depois blocos em coluna de leitura e um cronograma em linha do tempo. */
+/* Layout: página única de rolagem suave sobre preto, uma seção por página do documento; acento laranja do PDF. */
 :root{
-  --black:#050505; --ink:#0B0B0C; --panel:#111113; --panel2:#17171A;
-  --bone:#F1ECE4; --soft:#B9B3AA; --mut:#7D7A75; --line:rgba(241,236,228,.09); --line2:rgba(241,236,228,.16);
-  --gold:#D9A85F; --gold2:#F2CF94; --gold-d:#8A6330; --steel:#7FB8C2;
-  --serif:'Instrument Serif',Georgia,serif;
-  --sans:'Inter Tight',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
-  --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+  --black:#08080A; --ink:#111215; --card:#18191D; --card2:#202228;
+  --text:#F3F0EA; --soft:#B4B0A8; --mut:#7E7B76; --line:rgba(243,240,234,.08); --line2:rgba(243,240,234,.15);
+  --or:#EC6A43; --or2:#F58A66; --or-d:#C2421F; --cta:#E8562A;
+  --ok:#5FBF8A; --no:#EF6A55;
+  --head:'Space Grotesk',-apple-system,sans-serif;
+  --body:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
   --ease:cubic-bezier(.22,1,.36,1);
   color-scheme:dark;
 }
@@ -25,248 +25,203 @@
 html{ background:var(--black); }
 html.lenis, html.lenis body{ height:auto; }
 .lenis.lenis-smooth{ scroll-behavior:auto!important; }
-body{ background:var(--black); color:var(--bone); font-family:var(--sans); font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
-::selection{ background:var(--gold); color:var(--black); }
+body{ background:var(--black); color:var(--text); font-family:var(--body); font-size:16px; line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+::selection{ background:var(--or); color:var(--black); }
 img{ max-width:100%; display:block; }
 a{ color:inherit; }
-:focus-visible{ outline:2px solid var(--gold); outline-offset:3px; border-radius:4px; }
+:focus-visible{ outline:2px solid var(--or); outline-offset:3px; border-radius:4px; }
 
-/* grão + luz que segue o cursor */
 .grain{ position:fixed; inset:-50%; z-index:1; pointer-events:none; opacity:.05;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   animation:grain 8s steps(8) infinite; }
 @keyframes grain{ 0%,100%{transform:translate(0,0)} 25%{transform:translate(-3%,2%)} 50%{transform:translate(2%,-3%)} 75%{transform:translate(-2%,-1%)} }
-.glow{ position:fixed; width:620px; height:620px; left:0; top:0; z-index:0; pointer-events:none; border-radius:50%;
-  background:radial-gradient(circle, rgba(217,168,95,.10), rgba(217,168,95,0) 62%); transform:translate(-50%,-50%); opacity:0; transition:opacity .6s; }
+.glow{ position:fixed; width:640px; height:640px; left:0; top:0; z-index:0; pointer-events:none; border-radius:50%;
+  background:radial-gradient(circle, rgba(236,106,67,.10), rgba(236,106,67,0) 62%); transform:translate(-50%,-50%); opacity:0; transition:opacity .6s; }
 @media (hover:hover){ body:hover .glow{ opacity:1; } }
 
-.wrap{ position:relative; z-index:2; max-width:1120px; margin:0 auto; padding-left:max(20px,env(safe-area-inset-left,0px)); padding-right:max(20px,env(safe-area-inset-right,0px)); }
-.read{ max-width:68ch; }
+.wrap{ position:relative; z-index:2; max-width:1160px; margin:0 auto; padding-left:max(20px,env(safe-area-inset-left,0px)); padding-right:max(20px,env(safe-area-inset-right,0px)); }
 
 /* nav */
 nav.top{ position:fixed; top:0; left:0; right:0; z-index:20; padding-top:env(safe-area-inset-top,0px);
-  background:linear-gradient(rgba(5,5,5,.86),rgba(5,5,5,.55)); backdrop-filter:blur(14px) saturate(1.2); -webkit-backdrop-filter:blur(14px) saturate(1.2); border-bottom:1px solid var(--line); }
-nav.top .wrap{ display:flex; align-items:center; gap:24px; height:58px; }
-.brand{ font-family:var(--serif); font-size:21px; letter-spacing:.01em; white-space:nowrap; text-decoration:none; }
-.brand i{ color:var(--gold); }
-nav.top ul{ list-style:none; display:flex; gap:4px; margin-left:auto; overflow-x:auto; scrollbar-width:none; }
-nav.top ul::-webkit-scrollbar{ display:none; }
-nav.top a.l{ display:block; font-size:13px; font-weight:500; color:var(--soft); text-decoration:none; padding:7px 11px; border-radius:99px; white-space:nowrap; transition:color .3s, background .3s; }
-nav.top a.l:hover{ color:var(--bone); background:var(--panel2); }
-nav.top a.l.on{ color:var(--black); background:var(--bone); }
-.prog{ position:absolute; left:0; bottom:-1px; height:1px; width:100%; transform-origin:left; transform:scaleX(0); background:linear-gradient(90deg,var(--gold-d),var(--gold2)); }
-@media (max-width:860px){ nav.top ul{ display:none; } }
+  background:linear-gradient(rgba(8,8,10,.88),rgba(8,8,10,.6)); backdrop-filter:blur(14px) saturate(1.2); -webkit-backdrop-filter:blur(14px) saturate(1.2); border-bottom:1px solid var(--line); }
+nav.top .wrap{ display:flex; align-items:center; gap:24px; height:60px; }
+.brand{ font-family:var(--head); font-weight:700; font-size:17px; letter-spacing:-.02em; white-space:nowrap; text-decoration:none; }
+.brand span{ color:var(--or); }
+nav.top ul{ list-style:none; display:flex; gap:4px; margin-left:auto; }
+nav.top a.l{ display:block; font-size:13px; font-weight:500; color:var(--soft); text-decoration:none; padding:7px 12px; border-radius:99px; white-space:nowrap; transition:color .3s, background .3s; }
+nav.top a.l:hover{ color:var(--text); background:var(--card2); }
+nav.top a.l.on{ color:var(--black); background:var(--text); }
+.prog{ position:absolute; left:0; bottom:-1px; height:2px; width:100%; transform-origin:left; transform:scaleX(0); background:linear-gradient(90deg,var(--or-d),var(--or2)); }
+@media (max-width:900px){ nav.top ul{ display:none; } }
 
 /* tipografia */
-.eyebrow{ font-family:var(--mono); font-size:11.5px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); display:flex; align-items:center; gap:12px; }
-.eyebrow::before{ content:""; width:28px; height:1px; background:var(--gold); }
-h1,h2,h3,h4{ font-weight:600; letter-spacing:-.025em; line-height:1.04; text-wrap:balance; }
-h2{ font-size:clamp(34px,5.4vw,64px); margin-top:18px; }
-h2 em, h1 em{ font-family:var(--serif); font-style:italic; font-weight:400; letter-spacing:-.01em; color:var(--gold2); }
-h3{ font-size:22px; letter-spacing:-.015em; }
-.lede{ font-size:clamp(17px,1.6vw,19.5px); color:var(--soft); margin-top:20px; max-width:62ch; }
-section{ position:relative; padding-block:clamp(90px,12vw,150px) 0; }
-.sec-head{ margin-bottom:48px; }
+.eyebrow{ font-family:var(--body); font-size:12.5px; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--or); }
+h1,h2,h3,h4{ font-family:var(--head); font-weight:700; letter-spacing:-.03em; line-height:1.04; text-wrap:balance; }
+h2{ font-size:clamp(34px,5.2vw,60px); margin-top:14px; }
+h3{ font-size:20px; letter-spacing:-.015em; }
+.lede{ font-size:clamp(17px,1.6vw,20px); color:var(--soft); margin-top:18px; max-width:62ch; }
+.foot-note{ color:var(--mut); font-size:14.5px; margin-top:22px; }
+section{ position:relative; padding-block:clamp(96px,12vw,150px) 0; }
+.sec-head{ margin-bottom:44px; }
 
 /* hero */
-.hero{ min-height:auto; padding-block:150px 90px; position:relative; }
-.hero .halo{ position:absolute; z-index:0; right:-10%; top:40px; width:min(760px,90vw); aspect-ratio:1; border-radius:50%; pointer-events:none;
-  background:radial-gradient(circle at 50% 50%, rgba(217,168,95,.16), rgba(217,168,95,.04) 40%, transparent 66%); filter:blur(10px); }
-.hero-grid{ display:grid; grid-template-columns:1.25fr .75fr; gap:56px; align-items:center; }
-.hero h1{ font-size:clamp(52px,9vw,124px); font-weight:700; letter-spacing:-.045em; line-height:.92; margin-top:26px; }
-.hero h1 .ln{ display:block; overflow:hidden; padding-bottom:.06em; }
+.hero{ padding-block:150px 80px; position:relative; }
+.hero .halo{ position:absolute; z-index:0; right:-12%; top:30px; width:min(780px,92vw); aspect-ratio:1; border-radius:50%; pointer-events:none;
+  background:radial-gradient(circle, rgba(236,106,67,.17), rgba(236,106,67,.04) 42%, transparent 66%); filter:blur(10px); }
+.hero-grid{ display:grid; grid-template-columns:1.3fr .7fr; gap:56px; align-items:center; }
+.hero h1{ font-size:clamp(56px,10vw,138px); letter-spacing:-.05em; line-height:.92; margin-top:24px; }
+.hero h1 .ln{ display:block; overflow:hidden; padding-bottom:.08em; }
 .hero h1 .ln > span{ display:inline-block; }
-.hero .sub{ font-size:clamp(17px,1.7vw,20px); color:var(--soft); margin-top:28px; max-width:52ch; }
-.chips{ display:flex; flex-wrap:wrap; gap:8px; margin-top:30px; }
-.chip{ font-size:13px; font-weight:500; padding:8px 14px; border:1px solid var(--line2); border-radius:99px; color:var(--bone); background:rgba(17,17,19,.6); }
-.chip b{ color:var(--gold2); font-weight:600; }
+.hero h1 .ln:last-child > span{ color:var(--or); }
+.hero .sub{ font-size:clamp(18px,1.9vw,22px); color:var(--soft); margin-top:26px; max-width:46ch; }
+.hero-meta{ display:flex; flex-wrap:wrap; gap:18px 48px; margin-top:44px; padding-top:24px; border-top:1px solid var(--line2); }
+.hero-meta div{ font-size:15px; }
+.hero-meta small{ display:block; font-size:13px; color:var(--mut); margin-bottom:2px; }
 
-.portrait{ position:relative; justify-self:center; width:min(340px,80vw); }
-.frame{ position:relative; aspect-ratio:4/5; border-radius:28px; overflow:hidden; background:var(--panel); border:1px solid var(--line2); }
-.frame::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg,transparent 45%,rgba(5,5,5,.88)); pointer-events:none; }
-.frame img{ width:100%; height:100%; object-fit:cover; filter:grayscale(.15) contrast(1.05); transform:scale(1.04); }
-.mono{ position:absolute; inset:0; display:grid; place-items:center; font-family:var(--serif); font-size:120px; font-style:italic; color:var(--gold); background:radial-gradient(circle at 40% 30%,var(--panel2),var(--ink)); }
+.portrait{ position:relative; justify-self:center; width:min(330px,78vw); }
+.frame{ position:relative; aspect-ratio:4/5; border-radius:26px; overflow:hidden; background:var(--card); border:1px solid var(--line2); }
+.frame::after{ content:""; position:absolute; inset:0; background:linear-gradient(180deg,transparent 45%,rgba(8,8,10,.9)); pointer-events:none; }
+.frame img{ width:100%; height:100%; object-fit:cover; transform:scale(1.04); }
+.mono{ position:absolute; inset:0; display:grid; place-items:center; font-family:var(--head); font-weight:700; font-size:110px; letter-spacing:-.06em; color:var(--or); background:radial-gradient(circle at 40% 30%,var(--card2),var(--ink)); }
 .frame.has-img .mono{ display:none; }
 .cap{ position:absolute; left:22px; right:22px; bottom:20px; z-index:2; }
-.cap .n{ font-family:var(--serif); font-size:30px; line-height:1; }
-.cap .r{ font-family:var(--mono); font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--gold2); margin-top:8px; }
-.ring{ position:absolute; inset:-14px; border-radius:38px; border:1px solid rgba(217,168,95,.28); pointer-events:none; }
-.ring.r2{ inset:-30px; border-radius:50px; border-color:rgba(217,168,95,.12); }
-.tag-float{ position:absolute; z-index:3; font-family:var(--mono); font-size:11px; letter-spacing:.08em; padding:8px 12px; border-radius:10px; background:rgba(17,17,19,.85); border:1px solid var(--line2); backdrop-filter:blur(8px); white-space:nowrap; }
-.tag-float b{ color:var(--gold2); font-weight:500; }
-.tf1{ left:-46px; top:22%; } .tf2{ right:-34px; top:58%; }
-@media (max-width:900px){ .hero-grid{ grid-template-columns:1fr; gap:70px; } .portrait{ justify-self:start; } .tf1{ left:auto; right:-10px; top:-18px; } .tf2{ right:auto; left:-10px; top:auto; bottom:90px; } }
+.cap .n{ font-family:var(--head); font-weight:700; font-size:26px; letter-spacing:-.02em; line-height:1; }
+.cap .r{ font-size:11px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--or2); margin-top:8px; }
+.ring{ position:absolute; inset:-14px; border-radius:36px; border:1px solid rgba(236,106,67,.3); pointer-events:none; }
+.ring.r2{ inset:-30px; border-radius:48px; border-color:rgba(236,106,67,.12); }
+.tag-float{ position:absolute; z-index:3; font-size:12px; font-weight:500; padding:9px 13px; border-radius:10px; background:rgba(24,25,29,.88); border:1px solid var(--line2); backdrop-filter:blur(8px); white-space:nowrap; }
+.tag-float b{ color:var(--or2); font-weight:600; }
+.tf1{ left:-50px; top:20%; } .tf2{ right:-36px; top:60%; }
+@media (max-width:900px){ .hero-grid{ grid-template-columns:1fr; gap:70px; } .portrait{ justify-self:start; } .tf1{ left:auto; right:-8px; top:-18px; } .tf2{ right:auto; left:-8px; top:auto; bottom:90px; } }
 
 /* marquee */
-.marquee{ position:relative; z-index:2; border-block:1px solid var(--line); overflow:hidden; padding-block:22px; margin-top:20px; }
-.marquee .track{ display:flex; gap:56px; width:max-content; animation:mq 48s linear infinite; }
-.marquee span{ font-family:var(--serif); font-style:italic; font-size:clamp(24px,3vw,36px); color:var(--soft); white-space:nowrap; display:flex; align-items:center; gap:56px; }
-.marquee span::after{ content:"✦"; font-style:normal; font-size:14px; color:var(--gold); }
+.marquee{ position:relative; z-index:2; border-block:1px solid var(--line); overflow:hidden; padding-block:22px; margin-top:10px; }
+.marquee .track{ display:flex; width:max-content; animation:mq 46s linear infinite; }
+.marquee span{ font-family:var(--head); font-weight:600; font-size:clamp(24px,3vw,38px); letter-spacing:-.03em; color:var(--soft); white-space:nowrap; display:flex; align-items:center; gap:44px; padding-right:44px; }
+.marquee span::after{ content:""; width:9px; height:9px; border-radius:50%; background:var(--or); }
 @keyframes mq{ to{ transform:translateX(-50%); } }
 
-/* formato */
-.stats{ display:grid; grid-template-columns:repeat(4,1fr); border:1px solid var(--line); border-radius:22px; overflow:hidden; background:var(--line); gap:1px; }
-.stat{ background:var(--ink); padding:30px 26px; min-width:0; }
-.stat .k{ font-size:clamp(40px,4.6vw,58px); font-weight:700; letter-spacing:-.04em; line-height:1; }
-.stat .k em{ font-family:var(--serif); font-weight:400; font-style:italic; color:var(--gold2); }
-.stat .l{ font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); margin-top:14px; }
-.stat p{ font-size:14px; color:var(--soft); margin-top:8px; }
-@media (max-width:860px){ .stats{ grid-template-columns:1fr 1fr; } }
-@media (max-width:480px){ .stats{ grid-template-columns:1fr; } }
+/* cards base */
+.card{ background:var(--card); border:1px solid var(--line); border-radius:18px; padding:26px; min-width:0; transition:border-color .4s var(--ease), transform .5s var(--ease); }
+.card:hover{ border-color:rgba(236,106,67,.35); }
+.card h3{ margin-bottom:8px; }
+.card p{ color:var(--soft); font-size:15px; }
+.card .t{ font-family:var(--head); font-weight:700; color:var(--or); font-size:17px; letter-spacing:-.01em; margin-bottom:8px; }
+.g3{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.g4{ display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+.g5{ display:grid; grid-template-columns:repeat(5,1fr); gap:14px; }
+@media (max-width:960px){ .g4,.g5{ grid-template-columns:1fr 1fr; } }
+@media (max-width:760px){ .g3{ grid-template-columns:1fr; } }
+@media (max-width:480px){ .g4,.g5{ grid-template-columns:1fr; } }
 
-.hour{ margin-top:22px; display:grid; grid-template-columns:10fr 40fr 10fr; border-radius:16px; overflow:hidden; border:1px solid var(--line); }
-.hour div{ padding:16px 18px; background:var(--panel); font-size:14px; min-width:0; }
-.hour div + div{ border-left:1px solid var(--line); }
-.hour b{ display:block; font-family:var(--mono); font-size:11px; letter-spacing:.12em; color:var(--gold); font-weight:500; margin-bottom:2px; }
-.hour div:nth-child(2){ background:var(--panel2); }
-@media (max-width:640px){ .hour{ grid-template-columns:1fr; } .hour div + div{ border-left:0; border-top:1px solid var(--line); } }
+/* a ideia */
+.idea h2{ max-width:20ch; }
+.stat .k{ font-family:var(--head); font-weight:700; font-size:clamp(64px,7vw,92px); letter-spacing:-.05em; line-height:1; color:var(--or); }
+.stat p{ margin-top:12px; color:var(--text); }
 
-.practice{ margin-top:22px; padding:28px 30px; border-radius:22px; border:1px solid rgba(217,168,95,.3); background:linear-gradient(135deg,rgba(217,168,95,.10),rgba(217,168,95,.02) 60%); display:grid; grid-template-columns:auto 1fr; gap:24px; align-items:center; }
-.practice .inf{ font-family:var(--serif); font-size:84px; line-height:.8; color:var(--gold2); }
-.practice h3{ margin-bottom:6px; }
-.practice p{ color:var(--soft); font-size:15px; }
-@media (max-width:560px){ .practice{ grid-template-columns:1fr; } }
+/* estrutura da aula */
+.bar{ margin-top:20px; display:flex; flex-wrap:wrap; align-items:center; gap:10px 34px; padding:20px 26px; border-radius:14px; background:var(--card2); border:1px solid var(--line2); }
+.bar b{ font-family:var(--head); color:var(--or); font-size:17px; }
+.bar span{ font-size:15.5px; }
 
-/* escada */
-.ladder{ display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
-.rung{ position:relative; padding:26px 22px 24px; border-radius:20px; background:var(--ink); border:1px solid var(--line); overflow:hidden; min-width:0; transition:border-color .4s var(--ease), transform .5s var(--ease); }
-.rung:hover{ border-color:rgba(217,168,95,.4); transform:translateY(-4px); }
-.rung .m{ font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--mut); }
-.rung .n{ font-family:var(--serif); font-style:italic; font-size:34px; line-height:1; margin:14px 0 12px; }
-.rung p{ font-size:14px; color:var(--soft); }
-.rung .lvl{ display:flex; gap:4px; margin-top:20px; }
-.rung .lvl i{ flex:1; height:3px; border-radius:2px; background:var(--line2); }
-.rung .lvl i.on{ background:linear-gradient(90deg,var(--gold-d),var(--gold2)); }
-@media (max-width:860px){ .ladder{ grid-template-columns:1fr 1fr; } }
-@media (max-width:480px){ .ladder{ grid-template-columns:1fr; } }
+/* modalidades */
+.mod h3{ font-size:19px; margin-bottom:6px; }
+.big-line{ font-size:clamp(20px,2.4vw,28px); font-weight:500; margin-top:56px; max-width:40ch; letter-spacing:-.01em; }
 
-/* cronograma */
-.month{ margin-top:70px; }
-.month:first-of-type{ margin-top:0; }
-.month-head{ display:flex; flex-wrap:wrap; align-items:baseline; gap:6px 20px; padding-bottom:20px; border-bottom:1px solid var(--line2); }
-.month-head .mm{ font-family:var(--mono); font-size:11.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--gold); }
-.month-head h3{ font-family:var(--serif); font-style:italic; font-weight:400; font-size:clamp(34px,4vw,46px); letter-spacing:-.01em; }
-.month-head p{ color:var(--soft); font-size:15px; margin-left:auto; }
-.aula{ border-bottom:1px solid var(--line); }
-.aula summary{ list-style:none; cursor:pointer; display:grid; grid-template-columns:88px 1fr auto; gap:20px; align-items:center; padding:24px 0; }
-.aula summary::-webkit-details-marker{ display:none; }
-.aula .no{ font-size:44px; font-weight:700; letter-spacing:-.05em; line-height:1; color:var(--mut); transition:color .4s; font-variant-numeric:tabular-nums; }
-.aula[open] .no, .aula summary:hover .no{ color:var(--gold2); }
-.aula .tt{ min-width:0; }
-.aula .tt h4{ font-size:clamp(19px,2vw,24px); letter-spacing:-.02em; }
-.aula .tt .meta{ display:flex; flex-wrap:wrap; gap:6px 14px; margin-top:7px; font-family:var(--mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--mut); }
-.trk{ color:var(--gold); } .trk.i{ color:var(--steel); } .trk.a{ color:var(--bone); }
-.plus{ width:38px; height:38px; border-radius:50%; border:1px solid var(--line2); position:relative; transition:transform .5s var(--ease), background .4s; flex:none; }
-.plus::before,.plus::after{ content:""; position:absolute; left:50%; top:50%; width:12px; height:1px; background:var(--bone); transform:translate(-50%,-50%); }
-.plus::after{ transform:translate(-50%,-50%) rotate(90deg); transition:transform .5s var(--ease); }
-.aula[open] .plus{ background:var(--bone); } .aula[open] .plus::before{ background:var(--black); }
-.aula[open] .plus::after{ transform:translate(-50%,-50%) rotate(0deg); background:var(--black); }
-.body{ display:grid; grid-template-columns:88px 1fr; gap:20px; padding-bottom:30px; }
-.body > div{ grid-column:2; min-width:0; display:grid; grid-template-columns:1.2fr 1fr; gap:16px; }
-.blk{ padding:20px 22px; border-radius:16px; background:var(--ink); border:1px solid var(--line); min-width:0; }
-.blk .lb{ font-family:var(--mono); font-size:10.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--gold); margin-bottom:10px; }
-.blk ul{ list-style:none; display:flex; flex-direction:column; gap:8px; }
-.blk li{ position:relative; padding-left:18px; font-size:14.5px; color:var(--bone); }
-.blk li::before{ content:""; position:absolute; left:0; top:.68em; width:7px; height:1px; background:var(--gold); }
-.blk p{ font-size:14.5px; color:var(--soft); }
-.blk.topics{ grid-row:span 2; background:var(--panel); }
-.blk.min{ border-color:rgba(217,168,95,.3); }
-.blk.min p{ color:var(--bone); }
-.blk.more .lb{ color:var(--steel); }
-.gate{ margin-top:22px; padding:22px 24px; border-radius:18px; border:1px dashed rgba(217,168,95,.45); display:grid; grid-template-columns:auto 1fr; gap:20px; align-items:start; }
-.gate .gl{ font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); padding-top:3px; white-space:nowrap; }
-.gate ul{ list-style:none; display:flex; flex-wrap:wrap; gap:8px; }
-.gate li{ font-size:14px; padding:6px 12px; border-radius:99px; background:var(--panel2); }
-@media (max-width:760px){
-  .aula summary{ grid-template-columns:56px 1fr auto; gap:14px; } .aula .no{ font-size:32px; }
-  .body{ grid-template-columns:1fr; } .body > div{ grid-column:1; grid-template-columns:1fr; } .blk.topics{ grid-row:auto; }
-  .gate{ grid-template-columns:1fr; gap:10px; } .month-head p{ margin-left:0; }
+/* caminho */
+.path .num{ font-family:var(--head); font-weight:700; font-size:54px; letter-spacing:-.04em; line-height:1; color:var(--or); margin-bottom:14px; }
+.path h3{ margin-bottom:10px; }
+.path .np{ margin-top:18px; font-size:14.5px; font-weight:600; color:var(--or2); }
+.path-line{ position:relative; height:2px; background:var(--line2); margin-bottom:26px; border-radius:2px; overflow:hidden; }
+.path-line i{ position:absolute; inset:0; background:linear-gradient(90deg,var(--or-d),var(--or2)); transform-origin:left; transform:scaleX(1); }
+
+/* 16 aulas: visão geral */
+.overview{ display:grid; grid-template-columns:repeat(4,1fr); gap:28px; }
+.overview h4{ font-size:19px; color:var(--or); margin-bottom:14px; }
+.overview ol{ list-style:none; display:flex; flex-direction:column; gap:2px; }
+.overview li a{ display:flex; gap:10px; padding:8px 10px; margin-left:-10px; border-radius:8px; text-decoration:none; font-size:15.5px; transition:background .3s; }
+.overview li a:hover{ background:var(--card2); }
+.overview li span{ color:var(--mut); font-variant-numeric:tabular-nums; min-width:22px; }
+@media (max-width:900px){ .overview{ grid-template-columns:1fr 1fr; } }
+@media (max-width:480px){ .overview{ grid-template-columns:1fr; } }
+
+/* plano prático */
+.month{ margin-top:90px; }
+.month:first-child{ margin-top:0; }
+.month .eyebrow{ display:block; }
+.month h3{ font-size:clamp(32px,4.2vw,48px); letter-spacing:-.035em; margin-top:10px; }
+.ptable{ margin-top:28px; border-radius:18px; overflow:hidden; border:1px solid var(--line); }
+.prow{ display:grid; grid-template-columns:1.05fr 1.5fr 1.5fr 1.2fr; }
+.prow > div{ padding:20px 22px; min-width:0; font-size:15px; }
+.phead{ background:var(--card2); }
+.phead > div{ font-family:var(--head); font-weight:600; font-size:14px; color:var(--text); padding-block:15px; }
+.pbody{ background:var(--card); border-top:1px solid var(--line); transition:background .4s; }
+.pbody:hover{ background:#1D1F24; }
+.pbody .an{ font-family:var(--head); font-weight:700; color:var(--or); font-size:15px; }
+.pbody .at{ font-family:var(--head); font-weight:700; font-size:17px; letter-spacing:-.015em; line-height:1.2; margin-top:2px; }
+.pbody .dt{ font-size:12.5px; color:var(--mut); margin-top:6px; }
+.pbody .c{ color:var(--soft); }
+.pbody .e{ font-weight:600; }
+.lbl{ display:none; font-size:11px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--or); margin-bottom:4px; }
+@media (max-width:860px){
+  .phead{ display:none; }
+  .prow{ grid-template-columns:1fr; }
+  .prow > div{ padding:6px 20px; } .prow > div:first-child{ padding-top:20px; } .prow > div:last-child{ padding-bottom:22px; }
+  .lbl{ display:block; }
 }
 
-/* cards genéricos */
-.grid2{ display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:14px; }
-.grid3{ display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:14px; }
-.grid2>*,.grid3>*{ min-width:0; }
-.card{ padding:26px; border-radius:20px; background:var(--ink); border:1px solid var(--line); }
-.card h3{ font-size:19px; margin-bottom:10px; }
-.card p, .card li{ font-size:14.5px; color:var(--soft); }
-.card ul{ list-style:none; display:flex; flex-direction:column; gap:7px; margin-top:6px; }
-.card li{ padding-left:18px; position:relative; }
-.card li::before{ content:""; position:absolute; left:0; top:.68em; width:7px; height:1px; background:var(--gold); }
-.pill{ display:inline-block; font-family:var(--mono); font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; padding:4px 10px; border-radius:99px; border:1px solid rgba(217,168,95,.4); color:var(--gold2); margin-bottom:14px; }
-.pill.s{ border-color:rgba(127,184,194,.4); color:var(--steel); }
-.note{ padding:20px 24px; border-left:2px solid var(--gold); background:rgba(217,168,95,.06); border-radius:0 14px 14px 0; color:var(--soft); font-size:15px; max-width:80ch; }
-.note b{ color:var(--bone); }
+/* produto-laboratório */
+.lab .num{ font-family:var(--head); font-weight:700; font-size:56px; letter-spacing:-.04em; line-height:1; color:var(--or); margin-bottom:14px; }
+.lab h3{ margin-bottom:10px; }
+.lab p b{ color:var(--text); font-weight:500; }
 
-/* tabelas */
-.tw{ overflow-x:auto; border:1px solid var(--line); border-radius:18px; background:var(--ink); }
-table{ width:100%; border-collapse:collapse; min-width:680px; font-size:14px; }
-th,td{ text-align:left; vertical-align:top; padding:15px 18px; border-bottom:1px solid var(--line); }
-th{ font-family:var(--mono); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--gold); font-weight:500; background:var(--panel); }
-td{ color:var(--soft); } td b{ color:var(--bone); font-weight:600; }
-tr:last-child td{ border-bottom:0; }
-.num{ text-align:right; white-space:nowrap; font-variant-numeric:tabular-nums; }
-tr.tot td{ color:var(--bone); background:var(--panel); }
+/* esteira */
+.tw{ overflow-x:auto; border-radius:18px; border:1px solid var(--line); }
+table{ width:100%; border-collapse:collapse; min-width:640px; font-size:15.5px; }
+th{ text-align:left; font-family:var(--head); font-weight:600; font-size:14px; padding:16px 22px; background:var(--card2); }
+td{ padding:18px 22px; border-top:1px solid var(--line); background:var(--card); color:var(--soft); vertical-align:top; }
+td:first-child{ color:var(--text); font-weight:600; }
+td.p{ color:var(--text); white-space:nowrap; font-variant-numeric:tabular-nums; }
+tr{ transition:background .3s; } tbody tr:hover td{ background:#1D1F24; }
+.lvl-bar{ display:inline-block; height:6px; border-radius:3px; background:linear-gradient(90deg,var(--or-d),var(--or2)); margin-top:9px; }
 
-/* produto: passos */
-.steps{ counter-reset:s; display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:14px; }
-.step{ counter-increment:s; position:relative; padding:28px 24px 24px; border-radius:20px; background:var(--ink); border:1px solid var(--line); min-width:0; }
-.step::before{ content:counter(s,decimal-leading-zero); font-family:var(--serif); font-style:italic; font-size:44px; color:var(--gold2); line-height:1; display:block; margin-bottom:14px; }
-.step h3{ font-size:18px; margin-bottom:8px; }
-.step p{ font-size:14px; color:var(--soft); }
-.step .door{ margin-top:16px; padding-top:14px; border-top:1px solid var(--line); font-family:var(--mono); font-size:10.5px; letter-spacing:.06em; text-transform:uppercase; color:var(--gold); line-height:1.5; }
-.canvas{ display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:20px; overflow:hidden; }
-.canvas div{ background:var(--ink); padding:20px; min-width:0; }
-.canvas b{ display:block; font-family:var(--mono); font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--steel); font-weight:500; margin-bottom:6px; }
-.canvas p{ font-size:13.5px; color:var(--soft); }
-@media (max-width:860px){ .canvas{ grid-template-columns:1fr 1fr; } }
-@media (max-width:440px){ .canvas{ grid-template-columns:1fr; } }
+/* autonomia */
+.auto .num{ font-family:var(--head); font-weight:700; font-size:52px; line-height:1; color:var(--or); margin-bottom:14px; }
+.auto .steps{ display:flex; gap:4px; margin-top:22px; }
+.auto .steps i{ flex:1; height:3px; border-radius:2px; background:var(--line2); }
+.auto .steps i.on{ background:var(--or); }
 
-/* funis */
-.funnel{ display:grid; grid-template-columns:260px 1fr; gap:30px; padding-block:32px; border-top:1px solid var(--line); }
-.funnel:last-child{ border-bottom:1px solid var(--line); }
-.funnel .fn{ font-family:var(--serif); font-style:italic; font-size:30px; line-height:1.05; }
-.funnel .fn small{ display:block; font-family:var(--mono); font-style:normal; font-size:11px; letter-spacing:.14em; color:var(--gold); margin-bottom:10px; }
-.flow{ display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-bottom:16px; }
-.flow span{ font-size:13px; font-weight:500; padding:7px 12px; border-radius:99px; background:var(--panel2); border:1px solid var(--line2); }
-.flow i{ font-style:normal; color:var(--gold); }
-.kv{ display:grid; grid-template-columns:150px 1fr; gap:8px 18px; font-size:14.5px; }
-.kv dt{ font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--mut); padding-top:3px; }
-.kv dd{ color:var(--soft); min-width:0; }
-@media (max-width:760px){ .funnel{ grid-template-columns:1fr; gap:14px; } .kv{ grid-template-columns:1fr; gap:2px; } .kv dd{ margin-bottom:10px; } }
+/* regras */
+.rules{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.rules h3{ font-size:24px; margin-bottom:16px; }
+.rules .yes h3{ color:var(--ok); } .rules .no h3{ color:var(--no); }
+.rules ul{ list-style:none; display:flex; flex-direction:column; gap:12px; }
+.rules li{ position:relative; padding-left:30px; font-size:16px; }
+.rules li::before{ position:absolute; left:0; top:0; font-family:var(--head); font-weight:700; }
+.rules .yes li::before{ content:"✓"; color:var(--ok); }
+.rules .no li::before{ content:"✕"; color:var(--no); }
+@media (max-width:760px){ .rules{ grid-template-columns:1fr; } }
 
-/* anexos */
-details.annex{ border:1px solid var(--line); border-radius:20px; background:var(--ink); margin-top:14px; overflow:hidden; }
-details.annex > summary{ list-style:none; cursor:pointer; padding:26px 28px; display:flex; align-items:center; gap:20px; }
-details.annex > summary::-webkit-details-marker{ display:none; }
-details.annex .ax{ font-family:var(--serif); font-style:italic; font-size:40px; color:var(--gold2); line-height:1; }
-details.annex h3{ font-size:20px; }
-details.annex .sm{ font-size:14px; color:var(--soft); margin-top:3px; }
-details.annex .plus{ margin-left:auto; }
-details.annex[open] .plus{ background:var(--bone); } details.annex[open] .plus::before{ background:var(--black); }
-details.annex[open] .plus::after{ transform:translate(-50%,-50%) rotate(0deg); background:var(--black); }
-.annex-in{ padding:0 28px 30px; display:flex; flex-direction:column; gap:22px; }
-.annex-in h4{ font-size:17px; margin-bottom:4px; }
-.annex-in p, .annex-in li{ font-size:14.5px; color:var(--soft); }
-.annex-in ul{ padding-left:18px; display:flex; flex-direction:column; gap:5px; }
-ol.inst{ list-style:none; counter-reset:i; border-top:1px solid var(--line); }
-ol.inst > li{ counter-increment:i; position:relative; padding:18px 0 18px 54px; border-bottom:1px solid var(--line); }
-ol.inst > li::before{ content:counter(i,decimal-leading-zero); position:absolute; left:0; top:18px; font-family:var(--mono); font-size:13px; color:var(--gold); }
-ol.inst h4{ color:var(--bone); }
-code{ font-family:var(--mono); font-size:.86em; padding:2px 6px; border-radius:5px; background:var(--panel2); border:1px solid var(--line); color:var(--gold2); overflow-wrap:anywhere; }
-pre{ font-family:var(--mono); font-size:12.5px; line-height:1.6; padding:16px 18px; border-radius:12px; background:#000; border:1px solid var(--line2); overflow-x:auto; color:var(--bone); margin-top:10px; }
-.annex-in .tw{ margin-top:10px; } .annex-in table{ min-width:460px; }
+/* entregas */
+.deliv h4{ font-size:19px; color:var(--or); margin-bottom:14px; }
+.deliv ul{ list-style:none; display:flex; flex-direction:column; gap:10px; }
+.deliv li{ position:relative; padding-left:20px; font-size:15.5px; }
+.deliv li::before{ content:""; position:absolute; left:0; top:.6em; width:7px; height:7px; border-radius:50%; border:1.5px solid var(--or); }
 
-footer{ position:relative; z-index:2; margin-top:140px; padding-block:60px calc(40px + env(safe-area-inset-bottom,0px)); border-top:1px solid var(--line); }
-footer .big{ font-family:var(--serif); font-style:italic; font-size:clamp(46px,9vw,120px); line-height:.9; letter-spacing:-.02em; color:var(--bone); }
-footer .big em{ color:var(--gold2); }
-footer .row{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; margin-top:40px; font-family:var(--mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--mut); }
+/* cta */
+.cta{ margin-top:clamp(96px,12vw,150px); background:var(--cta); color:#16171A; position:relative; z-index:2; overflow:hidden; }
+.cta .wrap{ padding-block:100px 70px; }
+.cta .eyebrow{ color:#16171A; }
+.cta h2{ font-size:clamp(48px,8vw,104px); letter-spacing:-.05em; }
+.cta ol{ list-style:none; counter-reset:c; margin-top:34px; display:flex; flex-direction:column; gap:4px; }
+.cta li{ counter-increment:c; font-size:clamp(19px,2.2vw,26px); font-weight:500; display:flex; gap:16px; padding-block:12px; border-bottom:1px solid rgba(22,23,26,.18); }
+.cta li::before{ content:counter(c)"."; font-family:var(--head); font-weight:700; min-width:28px; }
+.cta .sig{ margin-top:80px; font-weight:600; font-size:15px; display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; }
+.cta .bigword{ position:absolute; right:-2%; bottom:-6%; font-family:var(--head); font-weight:700; font-size:clamp(120px,22vw,320px); letter-spacing:-.06em; line-height:.8; color:rgba(22,23,26,.08); pointer-events:none; white-space:nowrap; }
 
-/* revelação: visível por padrão; só anima quando o JS confirma que pode */
 .js .rv{ opacity:0; transform:translateY(28px); }
 @media (prefers-reduced-motion:reduce){
-  .grain,.marquee .track{ animation:none; } .js .rv{ opacity:1; transform:none; }
-  .rung,.plus,.plus::after{ transition:none; }
+  .grain,.marquee .track{ animation:none; } .js .rv{ opacity:1; transform:none; } .card{ transition:none; }
 }
 </style>
 </head>
@@ -276,46 +231,45 @@ footer .row{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:12
 
 <nav class="top" aria-label="Seções">
   <div class="wrap">
-    <a class="brand" href="#inicio">Do Clique <i>ao</i> Funil</a>
+    <a class="brand" href="#inicio">Infoprodutos <span>na prática</span></a>
     <ul>
-      <li><a class="l" href="#formato">Formato</a></li>
-      <li><a class="l" href="#escada">Escada</a></li>
-      <li><a class="l" href="#cronograma">Cronograma</a></li>
-      <li><a class="l" href="#projetos">Projetos</a></li>
-      <li><a class="l" href="#produto">Produto</a></li>
-      <li><a class="l" href="#funis">Funis</a></li>
-      <li><a class="l" href="#provas">Provas</a></li>
-      <li><a class="l" href="#anexos">Anexos</a></li>
+      <li><a class="l" href="#ideia">A ideia</a></li>
+      <li><a class="l" href="#semana">Semana</a></li>
+      <li><a class="l" href="#caminho">Caminho</a></li>
+      <li><a class="l" href="#aulas">16 aulas</a></li>
+      <li><a class="l" href="#plano">Plano prático</a></li>
+      <li><a class="l" href="#produto">Seu produto</a></li>
+      <li><a class="l" href="#autonomia">Autonomia</a></li>
+      <li><a class="l" href="#entregas">Entregas</a></li>
     </ul>
   </div>
   <div class="prog" aria-hidden="true"></div>
 </nav>
 
-<!-- HERO -->
+<!-- 01 · CAPA -->
 <header class="hero" id="inicio">
   <div class="halo" aria-hidden="true"></div>
   <div class="wrap hero-grid">
     <div>
       <div class="eyebrow h-in">Mentoria individual · 4 meses</div>
-      <h1><span class="ln"><span>Do clique</span></span><span class="ln"><span>ao <em>funil.</em></span></span></h1>
-      <p class="sub h-in">Tráfego pago e criação de infoprodutos, aprendidos dentro de projetos que estão rodando agora. Uma hora por semana comigo. A prática não tem teto.</p>
-      <div class="chips h-in">
-        <span class="chip"><b>16</b> aulas de 1h</span>
-        <span class="chip"><b>∞</b> horas de prática</span>
-        <span class="chip"><b>4</b> degraus de autonomia</span>
-        <span class="chip">Projetos reais</span>
+      <h1><span class="ln"><span>Infoprodutos</span></span><span class="ln"><span>na prática</span></span></h1>
+      <p class="sub h-in">Você aprende a criar e vender produtos digitais trabalhando em projetos reais comigo.</p>
+      <div class="hero-meta h-in">
+        <div><small>Mentorado</small>Leonardo Alves</div>
+        <div><small>Mentor</small>Felipe Cavalcanti</div>
+        <div><small>Início</small><span class="start-lbl">01/12/2026</span></div>
       </div>
     </div>
     <div class="portrait h-in">
       <div class="ring r2" aria-hidden="true"></div>
       <div class="ring" aria-hidden="true"></div>
-      <div class="frame" id="frame">
+      <div class="frame">
         <div class="mono" aria-hidden="true">LA</div>
         <img src="img/leonardo.jpg" alt="Leonardo Alves" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()">
-        <div class="cap"><div class="n">Leonardo Alves</div><div class="r">Mentorado · Founder LSA Services</div></div>
+        <div class="cap"><div class="n">Leonardo Alves</div><div class="r">Mentorado</div></div>
       </div>
       <div class="tag-float tf1"><b>Mentor</b> · Felipe Cavalcanti</div>
-      <div class="tag-float tf2">Início <b id="start-lbl">01/12/2026</b></div>
+      <div class="tag-float tf2">Início <b class="start-lbl">01/12/2026</b></div>
     </div>
   </div>
 </header>
@@ -324,284 +278,173 @@ footer .row{ display:flex; flex-wrap:wrap; justify-content:space-between; gap:12
 
 <main>
 
-<!-- FORMATO -->
-<section id="formato">
+<!-- 02 · A IDEIA -->
+<section id="ideia" class="idea">
   <div class="wrap">
     <div class="sec-head">
-      <div class="eyebrow rv">O formato</div>
-      <h2 class="rv">Uma hora comigo.<br><em>O resto é campo.</em></h2>
-      <p class="lede rv">A aula semanal serve para corrigir rota e abrir o próximo tema. Quem aprende de verdade é a mão no gerenciador e no funil durante a semana, dentro dos projetos em que você vai estar alocado.</p>
+      <div class="eyebrow rv">A ideia</div>
+      <h2 class="rv">Uma aula por semana para aprender. O resto da semana para fazer: no seu produto e nos meus projetos.</h2>
     </div>
-    <div class="stats rv">
-      <div class="stat"><div class="k">16</div><div class="l">Aulas ao vivo</div><p>Uma por semana, 1h cada, sempre com tema e tópicos definidos.</p></div>
-      <div class="stat"><div class="k"><em>∞</em></div><div class="l">Prática</div><p>Sem limite de horas. Cada aula tem um mínimo obrigatório e uma trilha para ir além.</p></div>
-      <div class="stat"><div class="k">2</div><div class="l">Trilhas juntas</div><p>Tráfego pago e infoproduto, que se encontram nos projetos reais.</p></div>
-      <div class="stat"><div class="k">1</div><div class="l">Produto seu</div><p>Um produto-laboratório pequeno, construído do zero ao primeiro tráfego.</p></div>
-    </div>
-    <div class="hour rv" aria-label="Como a hora é dividida">
-      <div><b>00–10 MIN</b>Revisão da prática da semana</div>
-      <div><b>10–50 MIN</b>Conteúdo da aula: os tópicos do cronograma, aplicados num projeto real</div>
-      <div><b>50–60 MIN</b>Prática da próxima semana</div>
-    </div>
-    <div class="practice rv">
-      <div class="inf" aria-hidden="true">∞</div>
-      <div>
-        <h3>Prática sem limite, com um mínimo inegociável</h3>
-        <p>Toda aula termina com uma <b style="color:var(--bone)">prática mínima</b>, que é a entrega revisada na aula seguinte, e uma trilha <b style="color:var(--bone)">para ir além</b>, sem teto de horas. Check-in escrito toda sexta e dúvidas no WhatsApp em horário comercial. A velocidade da escada depende da prática, não do calendário.</p>
-      </div>
+    <div class="g3">
+      <div class="card stat rv"><div class="k" data-count="16">16</div><p>aulas ao vivo de 1 hora, uma por semana</p></div>
+      <div class="card stat rv"><div class="k" data-count="4">4</div><p>meses, com entregas claras em cada um</p></div>
+      <div class="card stat rv"><div class="k" data-count="1">1</div><p>produto seu, do zero até as primeiras vendas</p></div>
     </div>
   </div>
 </section>
 
-<!-- ESCADA -->
-<section id="escada">
+<!-- 03 · SEMANA -->
+<section id="semana">
   <div class="wrap">
-    <div class="sec-head">
-      <div class="eyebrow rv">Escada de autonomia</div>
-      <h2 class="rv">Você sobe quando <em>prova</em>,<br>não quando o mês acaba.</h2>
-      <p class="lede rv">Cada mês é um degrau de responsabilidade nos projetos. Sem a prova do degrau, você repete a função por mais algumas semanas. O conteúdo segue normalmente.</p>
+    <div class="sec-head"><h2 class="rv">Como funciona a semana</h2></div>
+    <div class="g4">
+      <div class="card rv"><div class="t">Aula ao vivo</div><p>1 hora, toda semana, com tema definido e aplicado num projeto real.</p></div>
+      <div class="card rv"><div class="t">Prática</div><p>Uma tarefa mínima obrigatória e uma trilha extra para quem quiser ir além, sem limite de horas.</p></div>
+      <div class="card rv"><div class="t">Check-in de sexta</div><p>Mensagem curta: o que entregou, quantas horas praticou, onde travou.</p></div>
+      <div class="card rv"><div class="t">Suporte</div><p>Dúvidas pelo WhatsApp em horário comercial.</p></div>
     </div>
-    <div class="ladder">
-      <div class="rung rv"><div class="m">Mês 1</div><div class="n">Sombra</div><p>Observa e replica. Acesso só de leitura. Nenhum botão de publicar.</p><div class="lvl"><i class="on"></i><i></i><i></i><i></i></div></div>
-      <div class="rung rv"><div class="m">Mês 2</div><div class="n">Copiloto</div><p>Monta campanhas e peças em rascunho. Eu reviso e publico.</p><div class="lvl"><i class="on"></i><i class="on"></i><i></i><i></i></div></div>
-      <div class="rung rv"><div class="m">Mês 3</div><div class="n">Piloto</div><p>Publica dentro de uma verba fechada. Eu audito toda semana.</p><div class="lvl"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div>
-      <div class="rung rv"><div class="m">Mês 4</div><div class="n">Dono de frente</div><p>Assume uma frente com KPI. Decide e me informa.</p><div class="lvl"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div></div>
+    <div class="bar rv"><b>Estrutura da aula</b><span>10 min · revisão da tarefa</span><span>40 min · conteúdo novo</span><span>10 min · tarefa da próxima semana</span></div>
+  </div>
+</section>
+
+<!-- 04 · MODALIDADES -->
+<section id="modalidades">
+  <div class="wrap">
+    <div class="sec-head"><h2 class="rv">Um projeto real, em qualquer modalidade</h2></div>
+    <div class="g3">
+      <div class="card mod rv"><h3>Lançamento</h3><p>Captação, aquecimento e carrinho aberto</p></div>
+      <div class="card mod rv"><h3>Perpétuo low ticket</h3><p>Venda todo dia com bump e upsell</p></div>
+      <div class="card mod rv"><h3>VSL</h3><p>Vídeo de vendas direto para o checkout</p></div>
+      <div class="card mod rv"><h3>Evento ou live</h3><p>Inscrição, comparecimento e oferta ao vivo</p></div>
+      <div class="card mod rv"><h3>High ticket</h3><p>Aplicação, call e fechamento</p></div>
+      <div class="card mod rv"><h3>Recorrência</h3><p>Assinatura ou comunidade mensal</p></div>
+    </div>
+    <p class="big-line rv">O plano de aulas vale para qualquer modalidade. Muda o funil, não o método.</p>
+    <p class="foot-note rv">O projeto é definido antes do início, com autorização do cliente.</p>
+  </div>
+</section>
+
+<!-- 05 · CAMINHO -->
+<section id="caminho">
+  <div class="wrap">
+    <div class="sec-head"><h2 class="rv">O caminho em 4 meses</h2></div>
+    <div class="path-line rv" aria-hidden="true"><i id="pathfill"></i></div>
+    <div class="g4">
+      <div class="card path rv"><div class="num">01</div><h3>Entender</h3><p>Mercado, público, esteira de produtos e funis de venda.</p><div class="np">Nos projetos: você observa</div></div>
+      <div class="card path rv"><div class="num">02</div><h3>Montar a oferta</h3><p>Promessa, preço, formato e roteiro do seu produto.</p><div class="np">Nos projetos: você ajuda</div></div>
+      <div class="card path rv"><div class="num">03</div><h3>Colocar no ar</h3><p>Página, checkout, rastreamento, criativos e pré-venda.</p><div class="np">Nos projetos: você executa</div></div>
+      <div class="card path rv"><div class="num">04</div><h3>Vender e ajustar</h3><p>Tráfego pago, métricas e otimização com base em dados.</p><div class="np">Nos projetos: você assume</div></div>
     </div>
   </div>
 </section>
 
-<!-- CRONOGRAMA -->
-<section id="cronograma">
+<!-- 06 · AS 16 AULAS -->
+<section id="aulas">
   <div class="wrap">
-    <div class="sec-head">
-      <div class="eyebrow rv">Cronograma</div>
-      <h2 class="rv">16 aulas.<br><em>Um tema por hora.</em></h2>
-      <p class="lede rv">Cada aula tem os tópicos que serão aprendidos, o projeto real onde eles viram prática, o mínimo que você entrega e a trilha livre. Toque numa aula para abrir.</p>
-    </div>
-    <div id="schedule"></div>
+    <div class="sec-head"><h2 class="rv">As 16 aulas</h2></div>
+    <div class="overview" id="overview"></div>
+    <p class="foot-note rv">Abaixo: o que você aprende, faz e entrega em cada aula.</p>
   </div>
 </section>
 
-<!-- PROJETOS -->
-<section id="projetos">
-  <div class="wrap">
-    <div class="sec-head">
-      <div class="eyebrow rv">Alocação em projetos</div>
-      <h2 class="rv">Aprender no <em>jogo de verdade.</em></h2>
-      <p class="lede rv">Você entra nos projetos em andamento por tipo de aprendizado. O nível de acesso sobe junto com a escada. Os projetos exatos são confirmados antes do início, com autorização de cada cliente.</p>
-    </div>
-    <div class="tw rv"><table>
-      <thead><tr><th>Frente</th><th>O que você aprende</th><th>Mês 1</th><th>Mês 2</th><th>Mês 3</th><th>Mês 4</th></tr></thead>
-      <tbody>
-        <tr><td><b>Rastreamento e CRM</b><br>Kit nova clínica (Anexos A e B)</td><td>CAPI, eventos de funil, Supabase, Cloudflare, onboarding técnico</td><td>Acompanha uma instalação</td><td>Instala do zero em ambiente de teste</td><td>Instala para cliente real com revisão</td><td>Dono das novas instalações</td></tr>
-        <tr><td><b>Funil VSL e esteira</b><br>Infoproduto de saúde da carteira</td><td>VSL, upsell, passagem do low ticket para o high ticket</td><td>Mapeia o funil</td><td>Ganchos e roteiros de anúncio</td><td>Opera campanha de topo</td><td>Relatório e ajuste de funil</td></tr>
-        <tr><td><b>Low ticket perpétuo</b><br>Produtos de R$ 197 a 297 da carteira</td><td>Order bump, ROAS do front, criativo em volume</td><td>Lê a conta</td><td>Monta teste de criativo</td><td>Opera com verba fechada</td><td>Escala ou pausa com dado</td></tr>
-        <tr><td><b>Serviço com WhatsApp</b><br>Clínicas que usam o CRM</td><td>Lead de conversa, agendamento, otimização por evento de fundo</td><td>Lê o funil no CRM</td><td>Cruza anúncio com agendamento</td><td>Otimiza por evento de fundo</td><td>Diagnóstico de conta</td></tr>
-        <tr><td><b>Escola e EAD</b><br>Modelo escola do kit</td><td>Funil de matrícula com evento único de conversão</td><td>—</td><td>—</td><td>Instalação do modelo escola</td><td>Acompanha os primeiros eventos</td></tr>
-      </tbody>
-    </table></div>
-    <div class="grid2" style="margin-top:22px">
-      <div class="note rv"><b>Regras de alocação.</b> Acesso a conta de cliente só com autorização do cliente. Informação de um cliente nunca vai para outro. Nada de falar com cliente sem alinhar comigo antes. Senha, token e chave secreta ficam comigo.</div>
-      <div class="card rv"><span class="pill">Erros que derrubam um degrau</span><ul>
-        <li>Publicar sem aprovação enquanto Copiloto.</li>
-        <li>Subir orçamento acima do teto combinado.</li>
-        <li>Pedir, copiar ou colar token, senha ou chave.</li>
-        <li>Falar com cliente sem alinhamento.</li>
-      </ul></div>
-    </div>
-  </div>
+<!-- 07–10 · PLANO PRÁTICO -->
+<section id="plano">
+  <div class="wrap" id="months"></div>
 </section>
 
-<!-- PRODUTO -->
+<!-- 11 · PRODUTO-LABORATÓRIO -->
 <section id="produto">
   <div class="wrap">
     <div class="sec-head">
-      <div class="eyebrow rv">Criação de produto digital</div>
-      <h2 class="rv">Oito etapas.<br><em>Cada uma com um portão.</em></h2>
-      <p class="lede rv">A mesma sequência serve para o seu produto-laboratório e para os projetos da carteira. Sem passar no portão, a próxima etapa não começa.</p>
+      <div class="eyebrow rv">Seu produto-laboratório</div>
+      <h2 class="rv">Um produto pequeno, criado por você do zero até as primeiras vendas</h2>
     </div>
-    <div class="steps">
-      <div class="step rv"><h3>Mercado e avatar</h3><p>Quem compra, qual dor, qual desejo, em que nível de consciência está. Pelo menos 10 conversas ou 30 comentários reais lidos antes de escrever.</p><div class="door">Portão · avatar em 1 página, com frases reais</div></div>
-      <div class="step rv"><h3>Tese e mecanismo</h3><p>Por que o público ainda não chegou no resultado e qual caminho diferente o produto propõe.</p><div class="door">Portão · tese em uma frase, mecanismo com nome</div></div>
-      <div class="step rv"><h3>Promessa e oferta</h3><p>Resultado desejado × chance de chegar lá, dividido por tempo × esforço. Promessa, stack, bônus que matam objeção, garantia, escassez real.</p><div class="door">Portão · canvas de oferta revisado</div></div>
-      <div class="step rv"><h3>Formato e preço</h3><p>Onde o produto entra na esteira define o formato, o preço e o funil.</p><div class="door">Portão · degrau e preço definidos</div></div>
-      <div class="step rv"><h3>Pré-venda</h3><p>Página simples, anúncio pequeno e oferta de lançamento. Vende antes de gravar.</p><div class="door">Portão · primeiras vendas ou lista com sinal claro</div></div>
-      <div class="step rv"><h3>Produção</h3><p>Módulos na ordem do resultado. Cada aula termina numa ação. Grava o mínimo que entrega a promessa.</p><div class="door">Portão · roteiro aprovado, 1ª turma consumindo</div></div>
-      <div class="step rv"><h3>Plataforma</h3><p>Checkout, área de membros, pixel e CAPI no checkout, bump, upsell, boas-vindas.</p><div class="door">Portão · compra de teste com Purchase no Gerenciador</div></div>
-      <div class="step rv"><h3>Funil e tráfego</h3><p>Escolhe o funil, fecha a matemática e só então liga a verba.</p><div class="door">Portão · CPA máximo calculado antes do 1º real</div></div>
+    <div class="g5">
+      <div class="card lab rv"><div class="num">1</div><h3>Público</h3><p><b>Pronto quando:</b> avatar em 1 página, com frases reais.</p></div>
+      <div class="card lab rv"><div class="num">2</div><h3>Oferta</h3><p><b>Pronto quando:</b> oferta em 1 página, revisada comigo.</p></div>
+      <div class="card lab rv"><div class="num">3</div><h3>Pré-venda</h3><p><b>Pronto quando:</b> primeiras vendas ou lista interessada.</p></div>
+      <div class="card lab rv"><div class="num">4</div><h3>Produção</h3><p><b>Pronto quando:</b> aulas gravadas e área de membros no ar.</p></div>
+      <div class="card lab rv"><div class="num">5</div><h3>Tráfego</h3><p><b>Pronto quando:</b> compra rastreada e CPA máximo calculado.</p></div>
     </div>
+    <p class="foot-note rv">Vende antes de gravar. Cada etapa só começa quando a anterior está pronta.</p>
+  </div>
+</section>
 
-    <h3 class="rv" style="margin:70px 0 18px">Esteira de produtos</h3>
+<!-- 12 · ESTEIRA -->
+<section id="esteira">
+  <div class="wrap">
+    <div class="sec-head"><h2 class="rv">A esteira de produtos</h2></div>
     <div class="tw rv"><table>
-      <thead><tr><th>Degrau</th><th class="num">Preço</th><th>Formato</th><th>Função</th><th>Funil comum</th></tr></thead>
+      <thead><tr><th>Degrau</th><th>Preço</th><th>Exemplos</th><th>Para que serve</th></tr></thead>
       <tbody>
-        <tr><td><b>Isca</b></td><td class="num">grátis</td><td>Aula, checklist, quiz, diagnóstico</td><td>Gerar lista e sinal de interesse</td><td>Captura ou quiz</td></tr>
-        <tr><td><b>Low ticket</b></td><td class="num">R$ 27–197</td><td>Ebook, minicurso, protocolo, desafio</td><td>Transformar lead em comprador e pagar o tráfego</td><td>Perpétuo ou VSL</td></tr>
-        <tr><td><b>Core</b></td><td class="num">R$ 297–1.997</td><td>Curso, programa, comunidade</td><td>Principal fonte de margem</td><td>VSL, lançamento, live</td></tr>
-        <tr><td><b>High ticket</b></td><td class="num">R$ 3.000+</td><td>Mentoria, imersão, consultoria</td><td>Margem alta, volume baixo</td><td>Aplicação + call</td></tr>
-        <tr><td><b>Recorrência</b></td><td class="num">R$ 47–497/mês</td><td>Assinatura, comunidade</td><td>LTV e previsibilidade</td><td>Upsell pós-compra</td></tr>
+        <tr><td>Isca<br><span class="lvl-bar" style="width:20%"></span></td><td class="p">Grátis</td><td>Aula, checklist, quiz</td><td>Gerar lista de interessados</td></tr>
+        <tr><td>Low ticket<br><span class="lvl-bar" style="width:38%"></span></td><td class="p">R$ 27 a 197</td><td>Ebook, minicurso, desafio</td><td>Transformar lead em comprador e pagar o tráfego</td></tr>
+        <tr><td>Core<br><span class="lvl-bar" style="width:58%"></span></td><td class="p">R$ 297 a 1.997</td><td>Curso, programa</td><td>Principal fonte de lucro</td></tr>
+        <tr><td>High ticket<br><span class="lvl-bar" style="width:80%"></span></td><td class="p">R$ 3.000+</td><td>Mentoria, imersão</td><td>Margem alta, poucos clientes</td></tr>
+        <tr><td>Recorrência<br><span class="lvl-bar" style="width:100%"></span></td><td class="p">R$ 47 a 497/mês</td><td>Assinatura, comunidade</td><td>Receita previsível</td></tr>
       </tbody>
     </table></div>
-
-    <h3 class="rv" style="margin:70px 0 18px">Canvas de oferta</h3>
-    <div class="canvas rv">
-      <div><b>Público</b><p>Quem é, em que momento, quanto pode pagar.</p></div>
-      <div><b>Dor</b><p>A frase que ele diria numa conversa.</p></div>
-      <div><b>Desejo</b><p>O depois concreto e mensurável.</p></div>
-      <div><b>Promessa</b><p>Resultado + prazo + sem o quê.</p></div>
-      <div><b>Mecanismo</b><p>O caminho diferente, com nome.</p></div>
-      <div><b>Formato</b><p>Aulas, encontros, material, suporte.</p></div>
-      <div><b>Stack</b><p>Cada bônus mata uma objeção.</p></div>
-      <div><b>Preço</b><p>À vista, parcelado, ancoragem.</p></div>
-      <div><b>Garantia</b><p>Prazo e condição simples.</p></div>
-      <div><b>Prova</b><p>Depoimentos, números, autoridade.</p></div>
-      <div><b>Escassez</b><p>Vagas, turma, prazo. Sempre real.</p></div>
-      <div><b>Próximo degrau</b><p>O que ele compra depois.</p></div>
-    </div>
   </div>
 </section>
 
-<!-- FUNIS -->
-<section id="funis">
+<!-- 13 · AUTONOMIA -->
+<section id="autonomia">
   <div class="wrap">
-    <div class="sec-head">
-      <div class="eyebrow rv">Funis de venda</div>
-      <h2 class="rv">Seis funis.<br><em>Preço e consciência escolhem.</em></h2>
-      <p class="lede rv">As taxas são referências de mercado para o primeiro teste. Depois quem manda é o dado da conta.</p>
+    <div class="sec-head"><h2 class="rv">Sua autonomia cresce com as entregas</h2></div>
+    <div class="g4">
+      <div class="card auto rv"><div class="num">1</div><h3>Observa</h3><p>Acesso só de leitura. Acompanha e replica.</p><div class="steps"><i class="on"></i><i></i><i></i><i></i></div></div>
+      <div class="card auto rv"><div class="num">2</div><h3>Ajuda</h3><p>Monta campanhas e peças em rascunho. Eu reviso e publico.</p><div class="steps"><i class="on"></i><i class="on"></i><i></i><i></i></div></div>
+      <div class="card auto rv"><div class="num">3</div><h3>Executa</h3><p>Publica com verba fechada. Eu reviso toda semana.</p><div class="steps"><i class="on"></i><i class="on"></i><i class="on"></i><i></i></div></div>
+      <div class="card auto rv"><div class="num">4</div><h3>Assume</h3><p>Cuida de uma frente com meta. Decide e me informa.</p><div class="steps"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></div></div>
     </div>
-    <div>
-      <div class="funnel rv"><div class="fn"><small>01</small>Perpétuo low ticket</div><div>
-        <div class="flow"><span>Anúncio</span><i>→</i><span>Página de vendas</span><i>→</i><span>Checkout + bump</span><i>→</i><span>Upsell</span><i>→</i><span>Downsell</span></div>
-        <dl class="kv"><dt>Quando</dt><dd>Produto de R$ 27 a 197, público consciente do problema.</dd><dt>Métrica</dt><dd>CPA contra o ticket médio do funil, não contra o preço do front.</dd><dt>Referência</dt><dd>Página 1–3% · bump 20–40% · upsell 5–15%.</dd></dl></div></div>
-      <div class="funnel rv"><div class="fn"><small>02</small>VSL</div><div>
-        <div class="flow"><span>Anúncio</span><i>→</i><span>Vídeo de vendas</span><i>→</i><span>Checkout</span><i>→</i><span>Upsell</span></div>
-        <dl class="kv"><dt>Quando</dt><dd>Oferta que precisa de explicação ou de mecanismo novo.</dd><dt>Métrica</dt><dd>Retenção até o pitch e conversão de quem viu o pitch.</dd><dt>Referência</dt><dd>Retenção até o pitch 10–25% · página 1–3%.</dd></dl></div></div>
-      <div class="funnel rv"><div class="fn"><small>03</small>Lançamento</div><div>
-        <div class="flow"><span>Captação</span><i>→</i><span>Aquecimento</span><i>→</i><span>Carrinho aberto</span><i>→</i><span>Fechamento</span></div>
-        <dl class="kv"><dt>Quando</dt><dd>Produto core com público frio e autoridade em construção.</dd><dt>Métrica</dt><dd>Custo por lead qualificado e conversão da lista.</dd><dt>Referência</dt><dd>Captura 25–45% · lista para venda 1–3%.</dd></dl></div></div>
-      <div class="funnel rv"><div class="fn"><small>04</small>Live ou webinar</div><div>
-        <div class="flow"><span>Anúncio</span><i>→</i><span>Inscrição</span><i>→</i><span>Grupo e lembretes</span><i>→</i><span>Live com oferta</span><i>→</i><span>Replay</span></div>
-        <dl class="kv"><dt>Quando</dt><dd>Ticket médio a alto. Live paga de R$ 27 a 97 filtra curioso e paga o tráfego.</dd><dt>Métrica</dt><dd>Comparecimento e conversão de quem ficou até a oferta.</dd><dt>Referência</dt><dd>Comparecimento gratuito 20–35% · pago 50–70%.</dd></dl></div></div>
-      <div class="funnel rv"><div class="fn"><small>05</small>Aplicação high ticket</div><div>
-        <div class="flow"><span>Anúncio</span><i>→</i><span>Formulário de aplicação</span><i>→</i><span>Qualificação</span><i>→</i><span>Call</span><i>→</i><span>Fechamento</span></div>
-        <dl class="kv"><dt>Quando</dt><dd>Mentoria, imersão ou consultoria de R$ 3.000 ou mais.</dd><dt>Métrica</dt><dd>Custo por call qualificada e fechamento na call.</dd><dt>Referência</dt><dd>Aplicação para call 30–50% · call para venda 15–30%.</dd></dl></div></div>
-      <div class="funnel rv"><div class="fn"><small>06</small>Serviço com WhatsApp e CRM</div><div>
-        <div class="flow"><span>Anúncio de mensagem</span><i>→</i><span>WhatsApp</span><i>→</i><span>Agendou</span><i>→</i><span>Compareceu</span><i>→</i><span>Fechou</span></div>
-        <dl class="kv"><dt>Quando</dt><dd>Clínicas e escolas. É o funil do kit dos anexos.</dd><dt>Métrica</dt><dd>Custo por agendamento e por fechamento, devolvidos à Meta pela CAPI.</dd><dt>Por quê</dt><dd>Otimizar por evento de fundo ensina o algoritmo a buscar quem fecha, não quem só manda "oi".</dd></dl></div></div>
-    </div>
-
-    <h3 class="rv" style="margin:70px 0 18px">Matemática do funil · exemplo low ticket</h3>
-    <div class="tw rv"><table>
-      <thead><tr><th>Componente</th><th class="num">Preço</th><th class="num">Adesão</th><th class="num">Por comprador</th></tr></thead>
-      <tbody>
-        <tr><td>Produto principal</td><td class="num">R$ 97,00</td><td class="num">100%</td><td class="num">R$ 97,00</td></tr>
-        <tr><td>Order bump</td><td class="num">R$ 37,00</td><td class="num">30%</td><td class="num">R$ 11,10</td></tr>
-        <tr><td>Upsell</td><td class="num">R$ 197,00</td><td class="num">10%</td><td class="num">R$ 19,70</td></tr>
-        <tr class="tot"><td><b>Ticket médio do funil</b></td><td></td><td></td><td class="num"><b>R$ 127,80</b></td></tr>
-        <tr><td>Depois de taxas e impostos (≈ 20%) · CPA de equilíbrio</td><td></td><td></td><td class="num">R$ 102,24</td></tr>
-        <tr class="tot"><td><b>CPA alvo para ROAS 1,5</b> (127,80 ÷ 1,5)</td><td></td><td></td><td class="num"><b>R$ 85,20</b></td></tr>
-      </tbody>
-    </table></div>
-    <p class="lede rv" style="font-size:15px">Abaixo de R$ 85 o front já dá lucro. Entre R$ 85 e R$ 102 empata, e só vale se houver produto core depois. Acima de R$ 102 é prejuízo. Cada conjunto gasta 2 a 3 vezes o CPA alvo antes de ser julgado.</p>
+    <p class="big-line rv">Você sobe de nível quando cumpre as entregas do mês, não quando o mês acaba.</p>
   </div>
 </section>
 
-<!-- PROVAS -->
-<section id="provas">
+<!-- 14 · REGRAS -->
+<section id="regras">
   <div class="wrap">
-    <div class="sec-head">
-      <div class="eyebrow rv">Avaliação</div>
-      <h2 class="rv">Quatro provas.<br><em>Nenhuma subjetiva.</em></h2>
+    <div class="sec-head"><h2 class="rv">Regras dos projetos</h2></div>
+    <div class="rules">
+      <div class="card yes rv"><h3>Sempre</h3><ul>
+        <li>Acesso a conta de cliente só com autorização dele</li>
+        <li>Informação de um cliente nunca vai para outro</li>
+        <li>Alinhar comigo antes de falar com qualquer cliente</li></ul></div>
+      <div class="card no rv"><h3>Nunca</h3><ul>
+        <li>Publicar sem aprovação enquanto estiver no nível “Ajuda”</li>
+        <li>Passar do orçamento combinado</li>
+        <li>Pedir ou usar senha, token ou chave: isso fica comigo</li></ul></div>
     </div>
-    <div class="grid2">
-      <div class="card rv"><span class="pill">Mês 1 · Sombra</span><ul><li>Explica sem consulta a matemática reversa de um projeto real.</li><li>2 relatórios semanais de conta aprovados.</li><li>Funil de 3 projetos reais desenhado.</li></ul></div>
-      <div class="card rv"><span class="pill">Mês 2 · Copiloto</span><ul><li>CRM de teste instalado, com evento visível no Gerenciador.</li><li>1 campanha aprovada sem retrabalho estrutural.</li><li>Canvas de oferta do produto-laboratório fechado.</li></ul></div>
-      <div class="card rv"><span class="pill">Mês 3 · Piloto</span><ul><li>3 semanas operando campanha real sem erro crítico.</li><li>Kit CRM instalado em cliente real.</li><li>Pré-venda do produto-laboratório no ar, com tráfego.</li></ul></div>
-      <div class="card rv"><span class="pill">Prova final · Dono de frente</span><ul><li>KPI batido, ou a queda explicada com dado e plano.</li><li>Case documentado: antes, durante e depois.</li><li>Plano de 90 dias apresentado e defendido.</li></ul></div>
-    </div>
-    <div class="card rv" style="margin-top:14px"><span class="pill s">Check-in de sexta</span>
-<pre>CHECK-IN · Semana __
-1. O que entreguei (com link):
-2. Horas de prática na semana:
-3. Número da semana (projeto + métrica + valor):
-4. Onde travei:
-5. O que preciso do Felipe:</pre></div>
+    <p class="foot-note rv">Quebrar uma regra faz você voltar um nível.</p>
   </div>
 </section>
 
-<!-- ANEXOS -->
-<section id="anexos">
+<!-- 15 · ENTREGAS -->
+<section id="entregas">
   <div class="wrap">
-    <div class="sec-head">
-      <div class="eyebrow rv">Anexos</div>
-      <h2 class="rv">Material de <em>apoio.</em></h2>
-      <p class="lede rv">Usados nas aulas 02, 07 e 11. Identificadores de produção, contatos e chaves ficam fora deste material.</p>
+    <div class="sec-head"><h2 class="rv">O que você entrega em cada mês</h2></div>
+    <div class="g4">
+      <div class="card deliv rv"><h4>Mês 1</h4><ul><li>Mapa do funil do projeto</li><li>Perfil do comprador com frases reais</li><li>Relatórios semanais da conta</li></ul></div>
+      <div class="card deliv rv"><h4>Mês 2</h4><ul><li>Oferta do seu produto em 1 página</li><li>Preço e formato definidos</li><li>Roteiro do produto aprovado</li></ul></div>
+      <div class="card deliv rv"><h4>Mês 3</h4><ul><li>Página e compra de teste rastreada</li><li>5 criativos aprovados</li><li>Pré-venda do seu produto no ar</li></ul></div>
+      <div class="card deliv rv"><h4>Mês 4</h4><ul><li>Campanha do projeto publicada</li><li>Decisões semanais justificadas com dados</li><li>Case + plano de 90 dias</li></ul></div>
     </div>
-
-    <details class="annex rv">
-      <summary><span class="ax">A</span><div><h3>Kit nova clínica · CRM Mega Social Media</h3><p class="sm">Passo a passo de instalação para um cliente novo, em cerca de 15 minutos.</p></div><span class="plus" aria-hidden="true"></span></summary>
-      <div class="annex-in">
-        <div class="grid2">
-          <div class="card"><span class="pill s">Modelo clínica</span><p>Novo → Em atendimento → Agendou → Compareceu → Fechou (+ Nutrição, Perdido), com Agenda. Eventos: Agendou, Compareceu, Fechou.</p></div>
-          <div class="card"><span class="pill s">Modelo escola</span><p>Novo lead → Em atendimento → Decidindo → Matriculou (+ Perdido), sem Agenda. Evento: só a matrícula.</p></div>
-        </div>
-        <div class="note">Cada clínica tem <b>o próprio Supabase (banco)</b> e <b>a própria Cloudflare (site)</b>, nas contas dela. Só o app da Meta "CRM Clinicas" é compartilhado. Nada de outro cliente vai junto.</div>
-        <div><h4>O que pedir ao cliente</h4><ul><li>Um Gmail da clínica, para criar Supabase e Cloudflare em nome dela.</li><li>Nome da clínica e de quem será o administrador.</li><li>ID do pixel/conjunto de dados e token da API de Conversões, se já for enviar eventos.</li></ul></div>
-        <ol class="inst">
-          <li><h4>Supabase: criar o projeto</h4><p>supabase.com → entrar com o Gmail da clínica → New project (região São Paulo, plano Free). Guardar a senha do banco em lugar seguro.</p></li>
-          <li><h4>Banco</h4><p>SQL Editor → New query → colar o <code>1_banco.sql</code> inteiro → Run. Deve aparecer "Banco do CRM criado".</p></li>
-          <li><h4>Usuário administrador</h4><p>Authentication → Users → Add user → Create new user. E-mail <code>admin@SLUG.crm</code> (ex.: <code>admin@bella.crm</code>; slug curto, minúsculo, sem espaço). O cliente digita a senha. Marcar <b>Auto Confirm User</b>. Depois: Sign In / Providers → desligar <b>Allow new users to sign up</b>.</p></li>
-          <li><h4>Configurar a clínica</h4><p>Preencher o bloco "PREENCHA" do <code>2_configurar_clinica.sql</code> (nome, slug, admin, pixel, token, nomes dos eventos) → SQL Editor → Run. Pode rodar de novo para corrigir. Sem pixel/token agora, deixar <code>''</code>. <b>Escola:</b> agendou <code>''</code>, compareceu <code>''</code>, fechou <code>'CRM_Matricula'</code>; etapa com nome vazio não envia evento.</p></li>
-          <li><h4>Funções (Edge Functions)</h4><p>Deploy a new function → Via Editor, uma de cada vez, com estes nomes exatos:</p>
-            <div class="tw"><table><thead><tr><th>Nome</th><th>Arquivo</th><th>Verify JWT</th></tr></thead><tbody>
-              <tr><td><code>admin-usuarios</code></td><td><code>funcoes/admin-usuarios.ts</code></td><td>ligado</td></tr>
-              <tr><td><code>whatsapp-conectar</code></td><td><code>funcoes/whatsapp-conectar.js</code></td><td>desligado</td></tr>
-              <tr><td><code>whatsapp-webhook</code></td><td><code>funcoes/whatsapp-webhook.js</code></td><td>desligado</td></tr>
-            </tbody></table></div>
-            <p style="margin-top:10px">Secrets: <code>WHATSAPP_VERIFY_TOKEN</code> (texto aleatório; o gerador do passo 6 sugere um), <code>META_APP_ID</code> e <code>META_APP_SECRET</code>. <b>Os valores do app são colados pelo Felipe.</b> O mentorado nunca vê a chave secreta.</p></li>
-          <li><h4>Gerar o site</h4><p>Project Settings → API Keys: copiar a <b>Project URL</b> e a <b>Publishable key</b> (nunca a secret). No Terminal, na pasta <code>site</code>:</p>
-<pre>python3 gerar_site.py --nome "Clínica Bella" --slug bella --modelo clinica --url https://XXXX.supabase.co --chave sb_publishable_XXXX
-# escola:
-python3 gerar_site.py --nome "Escola X" --slug escolax --modelo escola --url https://XXXX.supabase.co --chave sb_publishable_XXXX</pre>
-            <p style="margin-top:8px">Sai o <code>site-bella.zip</code>.</p></li>
-          <li><h4>Cloudflare: publicar</h4><p>dash.cloudflare.com (Gmail da clínica) → Workers &amp; Pages → Create → Pages → <b>Upload assets</b> → projeto <code>crm-bella</code> → enviar o zip → Deploy. Endereço: <code>https://crm-bella.pages.dev</code></p></li>
-          <li><h4>App da Meta (uma vez por clínica)</h4><p>No app CRM Clinicas: adicionar <code>https://crm-bella.pages.dev/</code> em Login do Facebook para Empresas → Domínios permitidos para o SDK do JavaScript, e <code>crm-bella.pages.dev</code> em Configurações → Básico → Domínios do app.</p></li>
-          <li><h4>Teste</h4><p>Entrar com o usuário <code>admin</code> → criar lead de teste → marcar "Agendou" → conferir CRM_Agendou no Gerenciador de Eventos (na escola, Matriculou → CRM_Matricula) → apagar o lead de teste.</p></li>
-          <li><h4>Entrega ao cliente</h4><ul><li>Configurações → Anúncios: os anúncios de WhatsApp aparecem sozinhos; é só dar nome.</li><li>Configurações → Usuários: criar a recepção.</li><li>Configurações → WhatsApp: "Conectar WhatsApp" (o celular lê o QR; o número não pode estar ligado a outro parceiro).</li><li>Opcional: importar planilha antiga.</li></ul></li>
-        </ol>
-        <div class="tw"><table><thead><tr><th>Arquivo do kit</th><th>O que é</th></tr></thead><tbody>
-          <tr><td><code>1_banco.sql</code></td><td>Estrutura completa e limpa (testada)</td></tr>
-          <tr><td><code>2_configurar_clinica.sql</code></td><td>Dados da clínica, admin, pixel e listas padrão</td></tr>
-          <tr><td><code>funcoes/</code></td><td>As 3 funções do Supabase</td></tr>
-          <tr><td><code>site/modelo.html</code> + <code>gerar_site.py</code></td><td>Gera o site já apontando para o Supabase da clínica</td></tr>
-        </tbody></table></div>
-      </div>
-    </details>
-
-    <details class="annex rv">
-      <summary><span class="ax">B</span><div><h3>Contexto do projeto CRM</h3><p class="sm">O que o produto faz, como os eventos funcionam e as regras de trabalho.</p></div><span class="plus" aria-hidden="true"></span></summary>
-      <div class="annex-in">
-        <div><h4>O que é</h4><p>CRM web para clínicas e escolas que recebe leads do WhatsApp automaticamente e envia eventos de funil para a Meta pela API de Conversões. Cada cliente tem Supabase (banco e funções) e Cloudflare Pages (site) nas próprias contas. Só o app da Meta é do Felipe.</p></div>
-        <div><h4>Eventos no caso em produção</h4>
-          <div class="tw"><table><thead><tr><th>Evento</th><th>Quando</th><th>Valor</th></tr></thead><tbody>
-            <tr><td><code>CRM_Agendou</code></td><td>Lead marcado como Agendou</td><td>Valor da avaliação (padrão R$ 300, editável)</td></tr>
-            <tr><td><code>CRM_Compareceu</code></td><td>Paciente compareceu</td><td>—</td></tr>
-            <tr><td><code>CRM_Fechou</code></td><td>Fechou protocolo</td><td>Valor do protocolo; pagamento adicional entra como nova compra só com o valor novo</td></tr>
-          </tbody></table></div>
-          <p style="margin-top:8px">Os status "Agendou" e "Perdido" movem o lead de etapa automaticamente.</p></div>
-        <div><h4>Estrutura do código</h4><ul><li><code>app/</code>: site em React + Vite, build em arquivo único.</li><li><code>supabase/migrations/</code>: histórico do banco.</li><li><code>supabase/functions/</code>: admin-usuarios, whatsapp-conectar, whatsapp-webhook.</li><li><code>kit-nova-clinica/</code>: o kit do Anexo A.</li></ul></div>
-        <div><h4>Regras de trabalho</h4><ul><li>SQL pelo SQL Editor do navegador.</li><li>Testar SQL num Postgres local antes de aplicar em produção.</li><li>Publicar função em produção só com autorização do Felipe.</li><li>Nunca digitar senha. Tokens e segredos só nos Secrets do Supabase, colados pelo Felipe.</li><li>Não mexer no número da plataforma nem nos eventos do pixel do site do cliente.</li></ul></div>
-        <div><h4>Próximo da fila: polo EAD (aula 11)</h4><p>Kit no modelo escola, ajustado para EAD: Novo lead → Em atendimento → Inscrito (<code>CRM_Inscricao</code>) → Matriculou (<code>CRM_Matricula</code>, com valor) → Perdido. Campos: modalidade, curso de interesse, forma de ingresso. Em aberto: canal dos leads, sequência inscrição → matrícula, valor enviado e acessos do polo.</p></div>
-      </div>
-    </details>
   </div>
 </section>
 </main>
 
-<footer>
+<!-- 16 · PRÓXIMOS PASSOS -->
+<footer class="cta" id="comecar">
+  <div class="bigword" aria-hidden="true">na prática</div>
   <div class="wrap">
-    <div class="big">Quem executa<br><em>enriquece.</em></div>
-    <div class="row"><span>Do Clique ao Funil · Mentoria de Leonardo Alves</span><span>Felipe Cavalcanti · 2026</span></div>
+    <div class="eyebrow rv">Próximos passos</div>
+    <h2 class="rv">Vamos começar?</h2>
+    <ol>
+      <li class="rv">Confirmar sua participação</li>
+      <li class="rv">Definir os projetos, com autorização dos clientes</li>
+      <li class="rv">Primeira aula: <span class="start-lbl">01/12/2026</span></li>
+    </ol>
+    <div class="sig"><span>Felipe Cavalcanti · Mentoria Infoprodutos na prática</span><span>Mentorado: Leonardo Alves</span></div>
   </div>
 </footer>
 
@@ -609,146 +452,75 @@ python3 gerar_site.py --nome "Escola X" --slug escolax --modelo escola --url htt
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
-/* ===== Data de início: troque aqui e todas as datas das aulas se ajustam ===== */
+/* Data da primeira aula: troque aqui e todas as datas se ajustam */
 const START = "2026-12-01";
 
 const MONTHS = [
- {m:1, name:"Sombra", theme:"Fundação", desc:"Observa, replica, não publica.", gate:["Matemática reversa sem consulta","2 relatórios de conta aprovados","Funil de 3 projetos desenhado"], aulas:[
-  {t:"O mapa do jogo", trk:"Tráfego + Infoproduto",
-   top:["Como tráfego pago e infoproduto se conectam num negócio","Estrutura Meta: BM, conta de anúncios, página, Instagram, pixel/conjunto de dados","Permissões, segurança e o que derruba uma conta","Esteira de produtos: isca, low ticket, core, high ticket","Regras da mentoria, da escada e da alocação"],
-   proj:"Acesso de leitura a uma conta da carteira e ao CRM.",
-   min:"Desenhar o BM de um projeto real: contas, páginas, pixel e quem tem acesso a quê.",
-   more:"Salvar 30 anúncios de infoproduto na Biblioteca de Anúncios e anotar o funil de cada um."},
-  {t:"Rastreamento e eventos", trk:"Tráfego",
-   top:["Pixel x API de Conversões (CAPI) e por que usar os dois","Evento padrão x personalizado e deduplicação","Lendo o Gerenciador de Eventos","Eventos de funil do CRM: Agendou, Compareceu, Fechou","Leitura dos Anexos A e B"],
-   proj:"Acompanha comigo uma instalação do kit CRM.",
-   min:"Reescrever o checklist de instalação do kit com as suas palavras, mais uma lista de dúvidas.",
-   more:"Instalar pixel num site seu e disparar um evento de teste."},
-  {t:"Matemática reversa", trk:"Tráfego + Infoproduto",
-   top:["Ticket médio, margem e LTV","CPL e CPA máximos","ROAS de equilíbrio e ROAS alvo","Matemática do funil com order bump e upsell","Quanto de verba um teste precisa para dizer alguma coisa"],
-   proj:"Matemática reversa de um projeto real, com os números dele.",
-   min:"Planilha de matemática reversa de um projeto da carteira.",
-   more:"Refazer a planilha para mais dois funis diferentes (low ticket e high ticket)."},
-  {t:"Ler uma conta", trk:"Tráfego",
-   top:["CPM, CTR, CPC, custo por resultado, frequência","Conversão de página e onde o funil vaza","O que cada métrica diz e o que ela não diz","Diagnóstico por etapa: anúncio, página, oferta","Modelo de relatório semanal"],
-   proj:"Relatório semanal de uma conta (só leitura).",
-   min:"Dois relatórios semanais aprovados e o tema do seu produto-laboratório escolhido.",
-   more:"Ler as contas dos outros projetos e listar 3 hipóteses de melhoria em cada uma."}
- ]},
- {m:2, name:"Copiloto", theme:"Construção", desc:"Monta tudo; eu reviso antes de subir.", gate:["CRM de teste com evento no Gerenciador","1 campanha aprovada sem retrabalho","Canvas de oferta fechado"], aulas:[
-  {t:"Avatar e consciência", trk:"Infoproduto",
-   top:["Dor, desejo e as frases que o público realmente usa","Os 5 níveis de consciência e o que cada um pede de copy","Pesquisa: conversas, comentários e avaliações","Avatar em uma página"],
-   proj:"Mapeia o avatar de um projeto real a partir dos comentários e das conversas.",
-   min:"Avatar do produto-laboratório em uma página, com frases reais.",
-   more:"Fazer 10 conversas com pessoas do público do seu produto."},
-  {t:"Promessa, mecanismo e oferta", trk:"Infoproduto",
-   top:["Equação de valor: resultado, chance, tempo, esforço","Promessa: resultado + prazo + sem o quê","Mecanismo com nome","Stack, bônus que matam objeção, garantia, escassez real","Canvas de oferta"],
-   proj:"Analisa a oferta de um infoproduto da carteira com o canvas.",
-   min:"Canvas de oferta do produto-laboratório preenchido.",
-   more:"Desmontar 5 ofertas de concorrentes no mesmo canvas."},
-  {t:"Estrutura de campanha", trk:"Tráfego",
-   top:["Objetivos de campanha e qual usar em cada funil","CBO x ABO e Advantage+","Público amplo x interesse x personalizado","Nomenclatura e organização","Instalação do kit CRM do zero em ambiente de teste"],
-   proj:"Monta uma campanha em rascunho num projeto real.",
-   min:"Campanha em rascunho revisada + CRM de teste no ar com CRM_Agendou no Gerenciador.",
-   more:"Montar a mesma campanha em três estruturas e defender qual escolheria."},
-  {t:"Criativo e testes", trk:"Tráfego",
-   top:["Ângulos e o gancho dos 3 primeiros segundos","Formatos: UGC, estático, carrossel, vídeo curto","Roteiro de anúncio","Teste de uma variável por vez","Quando um criativo morreu"],
-   proj:"Primeira campanha montada por você vai ao ar (eu publico).",
-   min:"10 ganchos e 3 roteiros aprovados para um projeto real.",
-   more:"Gravar e editar 3 criativos para o produto-laboratório."}
- ]},
- {m:3, name:"Piloto", theme:"Operação", desc:"Opera com verba fechada; eu audito toda semana.", gate:["3 semanas sem erro crítico","Kit CRM em cliente real","Pré-venda no ar com tráfego"], aulas:[
-  {t:"Página de vendas", trk:"Infoproduto",
-   top:["Estrutura da página: promessa, problema, mecanismo, oferta, prova, garantia, FAQ","Headline e primeira dobra","Copy por nível de consciência","Página de pré-venda enxuta"],
-   proj:"Revisa a página de um projeto real e propõe 3 testes.",
-   min:"Copy da página de pré-venda do produto-laboratório.",
-   more:"Escrever duas versões de headline e de primeira dobra para teste A/B."},
-  {t:"Funil completo", trk:"Infoproduto",
-   top:["Checkout, order bump, upsell e downsell","Área de membros e plataforma","Pixel e CAPI no checkout, evento Purchase","Follow-up por e-mail e WhatsApp, recuperação de carrinho"],
-   proj:"Opera uma campanha real com teto de verba.",
-   min:"Funil do produto-laboratório montado com compra de teste registrada no Gerenciador.",
-   more:"Escrever a sequência de 5 mensagens de recuperação de carrinho."},
-  {t:"Otimização e remarketing", trk:"Tráfego",
-   top:["Rotina diária de 15 minutos","Quando pausar e quando esperar: 2 a 3× o CPA alvo","Públicos personalizados, semelhantes e lista do CRM","Remarketing por etapa do funil","Instalação do kit em cliente real"],
-   proj:"Instala o kit CRM num cliente real (ex.: polo EAD) com minha revisão.",
-   min:"Kit instalado com evento conferido + pré-venda no ar com R$ 20–30/dia de verba sua.",
-   more:"Diário de otimização com cada decisão justificada, todos os dias."},
-  {t:"Do dado à decisão", trk:"Tráfego",
-   top:["Relatório para cliente: o que aconteceu, por quê, o que fazer","Como apresentar número ruim","Primeira leitura do funil do produto-laboratório","Prioridade: o que mexer primeiro"],
-   proj:"Apresenta para mim o relatório do projeto que opera.",
-   min:"Relatório de cliente aprovado para envio.",
-   more:"Gravar um vídeo de 5 minutos explicando o relatório como se fosse para o cliente."}
- ]},
- {m:4, name:"Dono de frente", theme:"Autonomia", desc:"Decide dentro da frente e me informa.", gate:["KPI batido ou queda explicada","Case documentado","Plano de 90 dias defendido"], aulas:[
-  {t:"Escala", trk:"Tráfego",
-   top:["Escala vertical: +20 a 30% a cada 48–72h","Escala horizontal: novos públicos e criativos","Otimizar por evento de fundo via CAPI","Sinais de saturação"],
-   proj:"Assume uma frente com KPI combinado por escrito.",
-   min:"KPI da frente acordado e plano de escala.",
-   more:"Simular a escala do produto-laboratório com a matemática do funil."},
-  {t:"Lançamento, live e perpétuo", trk:"Infoproduto",
-   top:["Quando lançar e quando deixar perpétuo","Verba de captação, aquecimento e carrinho","Live gratuita x live paga","Calendário de um lançamento enxuto"],
-   proj:"Opera a frente sozinho e reporta no check-in.",
-   min:"Plano de lançamento ou de perpétuo do produto-laboratório.",
-   more:"Roteiro completo da live de venda do seu produto."},
-  {t:"Auditoria", trk:"Tráfego + Infoproduto",
-   top:["Auditoria de conta: estrutura, rastreamento, criativo, verba","Auditoria de funil: página, checkout, oferta","Do diagnóstico ao plano de ação","Ajuste de oferta com dado"],
-   proj:"Audita uma conta da carteira como se fosse um cliente novo.",
-   min:"Auditoria de conta aprovada.",
-   more:"Auditar também o funil do mesmo projeto e cruzar as duas leituras."},
-  {t:"Apresentação final", trk:"Tráfego + Infoproduto",
-   top:["Case da frente operada: antes, durante, depois","Case do produto-laboratório","Plano dos próximos 90 dias","Próximos passos na operação"],
-   proj:"Defende o plano de 90 dias.",
-   min:"Apresentação final feita.",
-   more:"Transformar o case em conteúdo para o seu próprio perfil."}
- ]}
+ { m:1, short:"Entender", title:"Entender o jogo", aulas:[
+  ["Mercado de infoprodutos","As modalidades (lançamento, perpétuo, VSL, evento, high ticket, recorrência) e como cada uma fatura","Identifica a modalidade do projeto e mapeia o caminho do cliente, do anúncio à compra","Mapa do funil do projeto em 1 página"],
+  ["Público, dor e desejo","Pesquisa de público e níveis de consciência","Lê 30 comentários, mensagens ou respostas reais do público do projeto","Perfil do comprador com frases reais"],
+  ["Esteira de produtos","Os degraus (isca, low ticket, core, high ticket, recorrência) e o papel de cada um","Desenha a esteira do projeto e aponta o que falta nela","Esteira do projeto + ideia do seu produto"],
+  ["Funis e métricas","Os principais funis e a métrica que decide cada um","Acompanha os números da conta do projeto durante a semana","1º relatório semanal da conta"] ]},
+ { m:2, short:"Oferta", title:"Montar a oferta", aulas:[
+  ["Tese e promessa","Mecanismo e promessa: resultado + prazo + sem o quê","Compara a promessa do projeto com 3 concorrentes na Biblioteca de Anúncios","Tese e promessa do seu produto"],
+  ["Oferta completa","Bônus que quebram objeção, garantia, prova e escassez real","Lista as objeções do público do projeto e como a oferta responde a cada uma","Oferta do seu produto em 1 página"],
+  ["Formato e preço","Preço, ancoragem, parcelamento, order bump e upsell","Calcula o ticket médio do funil do projeto","Preço e formato do seu produto definidos"],
+  ["Roteiro do produto","Módulos na ordem do resultado; cada aula termina numa ação","Revisa a estrutura do produto do projeto e sugere melhorias","Roteiro do seu produto aprovado"] ]},
+ { m:3, short:"No ar", title:"Colocar no ar", aulas:[
+  ["Página e copy","Estrutura de página de vendas, captura e VSL","Escreve uma variação de copy ou seção de página, em rascunho","Página do seu produto no ar"],
+  ["Checkout e rastreamento","Plataforma, área de membros, pixel, API de Conversões e eventos","Confere os eventos do projeto no Gerenciador e aponta falhas","Compra de teste rastreada no seu produto"],
+  ["Criativos e anúncios","Ganchos, formatos e como testar criativos em volume","Produz ganchos e roteiros de anúncio para o projeto","5 criativos aprovados"],
+  ["Pré-venda","Como vender antes de gravar e validar com dinheiro real","Acompanha uma ação de venda do projeto (abertura, live, oferta)","Pré-venda do seu produto no ar"] ]},
+ { m:4, short:"Vender", title:"Vender e ajustar", aulas:[
+  ["Campanha no Meta Ads","Campanha, conjunto e anúncio, orçamento e fase de aprendizado","Monta uma campanha do projeto e publica com verba fechada","Campanha publicada e aprovada"],
+  ["Matemática do funil","Ticket médio, CPA de equilíbrio e CPA alvo","Calcula o CPA máximo do projeto antes de subir verba","Conta do funil do projeto e do seu produto"],
+  ["Métricas e otimização","O que olhar primeiro e quando pausar, manter ou escalar","Toma uma decisão por semana na conta, justificada com dados","2 relatórios com decisão"],
+  ["Case e próximos 90 dias","Como documentar resultado e planejar a próxima fase","Fecha o case do que fez no projeto: antes, durante e depois","Case + plano de 90 dias apresentados"] ]}
 ];
 
 const esc = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;");
-const fmt = d => d.toLocaleDateString("pt-BR",{day:"2-digit",month:"short"}).replace(".","");
-const base = new Date(START+"T12:00:00");
-document.getElementById("start-lbl").textContent = base.toLocaleDateString("pt-BR");
-const trkClass = t => t.includes("+") ? "a" : (t === "Infoproduto" ? "i" : "");
-let n = 0;
-document.getElementById("schedule").innerHTML = MONTHS.map(M => `
+const base = new Date(START + "T12:00:00");
+const dateOf = i => { const d = new Date(base); d.setDate(base.getDate() + i*7); return d.toLocaleDateString("pt-BR",{day:"2-digit",month:"2-digit"}); };
+document.querySelectorAll(".start-lbl").forEach(el => el.textContent = base.toLocaleDateString("pt-BR"));
+const pad = n => String(n).padStart(2,"0");
+
+let i = 0;
+document.getElementById("overview").innerHTML = MONTHS.map(M => `
+  <div class="rv"><h4>Mês ${M.m} · ${M.short}</h4><ol>${M.aulas.map(a => { i++; return `<li><a href="#aula-${i}"><span>${i}.</span>${esc(a[0])}</a></li>`; }).join("")}</ol></div>`).join("");
+
+i = 0;
+document.getElementById("months").innerHTML = MONTHS.map(M => `
   <div class="month">
-    <div class="month-head rv"><span class="mm">Mês ${M.m} · ${M.theme}</span><h3>${M.name}</h3><p>${M.desc}</p></div>
-    ${M.aulas.map(a => { n++; const d = new Date(base); d.setDate(base.getDate() + (n-1)*7); return `
-    <details class="aula rv"${n===1?" open":""}>
-      <summary>
-        <span class="no">${String(n).padStart(2,"0")}</span>
-        <span class="tt"><h4>${esc(a.t)}</h4><span class="meta"><span>${fmt(d)}</span><span class="trk ${trkClass(a.trk)}">${a.trk}</span><span>1h</span></span></span>
-        <span class="plus" aria-hidden="true"></span>
-      </summary>
-      <div class="body"><div>
-        <div class="blk topics"><div class="lb">Tópicos da aula</div><ul>${a.top.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>
-        <div class="blk"><div class="lb">Projeto real</div><p>${esc(a.proj)}</p></div>
-        <div class="blk min"><div class="lb">Prática mínima · entrega</div><p>${esc(a.min)}</p></div>
-        <div class="blk more" style="grid-column:1/-1"><div class="lb">Para ir além · sem limite</div><p>${esc(a.more)}</p></div>
-      </div></div>
-    </details>`; }).join("")}
-    <div class="gate rv"><span class="gl">Prova · ${M.name}</span><ul>${M.gate.map(g=>`<li>${esc(g)}</li>`).join("")}</ul></div>
+    <span class="eyebrow rv">Plano prático · Mês ${M.m}</span>
+    <h3 class="rv">${M.title}</h3>
+    <div class="ptable rv">
+      <div class="prow phead"><div>Aula</div><div>O que você aprende</div><div>O que faz no projeto</div><div>O que entrega</div></div>
+      ${M.aulas.map(a => { i++; return `
+      <div class="prow pbody" id="aula-${i}">
+        <div><div class="an">${pad(i)}</div><div class="at">${esc(a[0])}</div><div class="dt">Aula de ${dateOf(i-1)} · 1h</div></div>
+        <div class="c"><span class="lbl">O que você aprende</span>${esc(a[1])}</div>
+        <div class="c"><span class="lbl">O que faz no projeto</span>${esc(a[2])}</div>
+        <div class="e"><span class="lbl">O que entrega</span>${esc(a[3])}</div>
+      </div>`; }).join("")}
+    </div>
   </div>`).join("");
 
-/* marquee */
-const words = ["Pixel e CAPI","Matemática reversa","Oferta","Criativo","Funil","Order bump","Escala","Pré-venda","Esteira","Evento de fundo"];
-const half = words.map(w=>`<span>${w}</span>`).join("");
+const words = ["Lançamento","Perpétuo low ticket","VSL","Evento ou live","High ticket","Recorrência"];
+const half = words.map(w => `<span>${w}</span>`).join("");
 document.getElementById("mq").innerHTML = half + half;
 
-/* animações */
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 if (!reduce && window.gsap && window.ScrollTrigger) {
   document.documentElement.classList.add("js");
   gsap.registerPlugin(ScrollTrigger);
-  let lenis = null;
   if (window.Lenis) {
-    lenis = new Lenis({ duration:1.15, easing:t => Math.min(1, 1.001 - Math.pow(2, -10*t)), smoothWheel:true });
+    const lenis = new Lenis({ duration:1.15, easing:t => Math.min(1, 1.001 - Math.pow(2, -10*t)), smoothWheel:true });
     lenis.on("scroll", ScrollTrigger.update);
     gsap.ticker.add(t => lenis.raf(t*1000)); gsap.ticker.lagSmoothing(0);
     document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener("click", e => {
       const el = document.querySelector(a.getAttribute("href")); if (!el) return;
-      e.preventDefault(); lenis.scrollTo(el, { offset:-70 });
+      e.preventDefault(); lenis.scrollTo(el, { offset:-80 });
     }));
-    document.querySelectorAll("details").forEach(d => d.addEventListener("toggle", () => { lenis.resize(); ScrollTrigger.refresh(); }));
   }
   gsap.from(".hero h1 .ln > span", { yPercent:110, duration:1.3, ease:"expo.out", stagger:.12, delay:.1 });
   gsap.from(".h-in", { y:24, opacity:0, duration:1.1, ease:"expo.out", stagger:.1, delay:.35 });
@@ -757,11 +529,16 @@ if (!reduce && window.gsap && window.ScrollTrigger) {
   gsap.to(".hero .halo", { yPercent:30, ease:"none", scrollTrigger:{ trigger:".hero", start:"top top", end:"bottom top", scrub:true } });
   ScrollTrigger.batch(".rv", { start:"top 90%", once:true,
     onEnter: els => gsap.to(els, { opacity:1, y:0, duration:1, ease:"expo.out", stagger:.07, overwrite:true }) });
+  gsap.fromTo("#pathfill", { scaleX:0 }, { scaleX:1, ease:"none", scrollTrigger:{ trigger:"#caminho", start:"top 70%", end:"bottom 60%", scrub:.6 } });
+  document.querySelectorAll(".stat .k").forEach(el => {
+    const n = +el.dataset.count, o = { v:0 };
+    ScrollTrigger.create({ trigger:el, start:"top 90%", once:true,
+      onEnter:() => gsap.to(o, { v:n, duration:1.4, ease:"expo.out", onUpdate:() => el.textContent = Math.round(o.v) }) });
+  });
+  gsap.from(".cta .bigword", { xPercent:12, ease:"none", scrollTrigger:{ trigger:".cta", start:"top bottom", end:"bottom bottom", scrub:true } });
   gsap.to(".prog", { scaleX:1, ease:"none", scrollTrigger:{ start:0, end:"max", scrub:.3 } });
-  /* link ativo */
   document.querySelectorAll("main section[id]").forEach(s => ScrollTrigger.create({ trigger:s, start:"top 50%", end:"bottom 50%",
     onToggle: self => { if (self.isActive) document.querySelectorAll("nav a.l").forEach(a => a.classList.toggle("on", a.getAttribute("href") === "#"+s.id)); } }));
-  /* luz do cursor */
   const glow = document.querySelector(".glow");
   const gx = gsap.quickTo(glow, "x", { duration:.8, ease:"power3" }), gy = gsap.quickTo(glow, "y", { duration:.8, ease:"power3" });
   addEventListener("pointermove", e => { gx(e.clientX); gy(e.clientY); });

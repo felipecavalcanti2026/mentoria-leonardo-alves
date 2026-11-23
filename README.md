@@ -1,4 +1,4 @@
-# Do Clique ao Funil
+# Infoprodutos na prática
 
-Plano de mentoria (tráfego pago + infoprodutos) de Leonardo Alves.
-Para trocar a foto: salvar como `img/leonardo.jpg`. Para trocar a data de início: constante `START` no script.
+Mentoria individual de Leonardo Alves (4 meses, 16 aulas).
+Foto: salvar como `img/leonardo.jpg`. Data de início: constante `START` no script.
